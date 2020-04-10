@@ -2,14 +2,10 @@ import java.util.ArrayList;
 
 public class GazGenerator {
 
-    ArrayList<GazInterface> myListeners = new ArrayList<GazInterface>();
     ArrayList<AtypeInterface> myListeners2 = new ArrayList<AtypeInterface>();
     ArrayList<BtypeInterface> myListeners3 = new ArrayList<BtypeInterface>();
 
 
-    public void addGazListener(GazListener gl){
-        this.myListeners.add(gl);
-    }
     public void addAtypeListener(AtypeInterface gl){
         this.myListeners2.add(gl);
     }
@@ -17,11 +13,9 @@ public class GazGenerator {
         this.myListeners3.add(gl);
     }
 
-    public void generateGazEvent(int importance, String type){
-        GazEvent event = new GazEvent(this,importance, type);
-        for(GazInterface ge: myListeners){
-            ge.Gaz(event);
-        }
+    public void generateGazEvent(String location,int level,String typeGaz){
+        GazEvent event = new GazEvent(this,location,level,typeGaz);
+
         for(AtypeInterface ai: myListeners2){
             ai.Atype(event);
         }
@@ -31,4 +25,3 @@ public class GazGenerator {
     }
 
 }
-

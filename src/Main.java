@@ -41,9 +41,9 @@ public class Main {
                 radiationG.addBtypeListener(listB);
 
 
-                gazG.generateGazEvent(2,"c2");
-                IncendieG.generateIncendieEvent(2);
-                IncendieG.generateIncendieEvent(3);
-                radiationG.generateRadiationEvent(3,99);
+                gazG.generateGazEvent("ChezMoi",3, "CO");
+                IncendieG.generateIncendieEvent("chez moi", 3);
+                IncendieG.generateIncendieEvent("chez toi",1);
+                radiationG.generateRadiationEvent("Chez moi",2,90);
             }
         }

@@ -1,0 +1,18 @@
+import java.util.ArrayList;
+
+
+public class IncendieGenerator {
+    ArrayList<AtypeInterface> myListeners2 = new ArrayList<AtypeInterface>();
+
+    public void addAtypeListener(AtypeInterface gl){
+        this.myListeners2.add(gl);
+    }
+
+    public void generateIncendieEvent(String location,int level){
+        IncendieEvent event = new IncendieEvent(this,location, level);
+
+        for(AtypeInterface ai: myListeners2){
+            ai.Atype(event);
+        }
+    }
+}
