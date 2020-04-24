@@ -10,6 +10,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/Incendie" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Radiation" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Alerte" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Graphique" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

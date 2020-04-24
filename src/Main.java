@@ -29,5 +29,6 @@ public class Main {
         IncendieG.generateIncendieEvent(A,1);
         radiationG.generateRadiationEvent(A,2,90);
 
+        Fenetre fen = new Fenetre();
     }
 }
