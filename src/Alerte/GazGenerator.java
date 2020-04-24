@@ -13,7 +13,7 @@ public class GazGenerator {
         this.myListeners3.add(gl);
     }
 
-    public void generateGazEvent(String location,int level,String typeGaz){
+    public void generateGazEvent(Batiment location,int level,String typeGaz){
         GazEvent event = new GazEvent(this,location,level,typeGaz);
 
         for(AtypeInterface ai: myListeners2){

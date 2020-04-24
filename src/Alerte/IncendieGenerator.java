@@ -8,7 +8,7 @@ public class IncendieGenerator {
         this.myListeners2.add(gl);
     }
 
-    public void generateIncendieEvent(String location,int level){
+    public void generateIncendieEvent(Batiment location,int level){
         IncendieEvent event = new IncendieEvent(this,location, level);
 
         for(AtypeInterface ai: myListeners2){

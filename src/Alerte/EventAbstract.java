@@ -3,10 +3,10 @@ import java.util.GregorianCalendar;
 
 abstract class EventAbstract extends EventObject {
     private GregorianCalendar date;
-    private String location;
+    private Batiment location;
     private int level;
 
-    public EventAbstract(Object source,String location,int level) {
+    public EventAbstract(Object source,Batiment location,int level) {
         super(source);
         this.date = new GregorianCalendar();
         this.location=location;
@@ -18,6 +18,6 @@ abstract class EventAbstract extends EventObject {
     }
     public  String toString(){
         return "Event produit : "+String.valueOf(this.date.getTime())
-                +"\nsitué à "+this.location+" de niveau "+String.valueOf(level);
+                +"\nsitué à "+this.location.getNom()+" de niveau "+String.valueOf(level);
     }
 }

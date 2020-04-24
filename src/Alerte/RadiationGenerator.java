@@ -8,7 +8,7 @@ public class RadiationGenerator {
     }
 
 
-    public void generateRadiationEvent(String location, int level, int radiation){
+    public void generateRadiationEvent(Batiment location, int level, int radiation){
         RadiationEvent event = new RadiationEvent(this,location, level, radiation);
 
         for(BtypeInterface ai: myListeners3){
