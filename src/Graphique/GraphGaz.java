@@ -2,10 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-public class GrphGaz extends AbstractAction {
+public class GraphGaz extends AbstractAction {
         private Fenetre fenetre;
 
-	public GrphGaz(Fenetre fenetre, String texte){
+	public GraphGaz(Fenetre fenetre, String texte){
             super(texte);
 
             this.fenetre = fenetre;
