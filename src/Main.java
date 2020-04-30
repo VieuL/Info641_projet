@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -28,7 +29,8 @@ public class Main {
         IncendieG.generateIncendieEvent(A, 3);
         IncendieG.generateIncendieEvent(A,1);
         radiationG.generateRadiationEvent(A,2,90);
-
+        ArrayList<Batiment> a = Batiment.liste;
+        System.out.println(a);
         Fenetre fen = new Fenetre();
     }
 }
