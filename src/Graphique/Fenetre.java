@@ -2,7 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Fenetre extends JFrame {
-
+    private String batAlarme;
+    private int niveauAlarme;
     public Fenetre(){
         this.setTitle("Activation des alarmes");
         this.setSize(getToolkit().getScreenSize());
@@ -35,5 +36,18 @@ public class Fenetre extends JFrame {
 
         this.setVisible(true);
     }
+    public void setbatAlarmee(String form){
+        this.batAlarme = form;
+    }
+    public void setNiveauAlarme(int form){
+        this.niveauAlarme = form;
+    }
 
+    public String getBatAlarme() {
+        return batAlarme;
+    }
+
+    public int getNiveauAlarme() {
+        return niveauAlarme;
+    }
 }
