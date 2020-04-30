@@ -1,5 +1,6 @@
 import javax.swing.*;
-import java.awt.Toolkit;
+import java.awt.*;
+
 public class Fenetre extends JFrame {
 
     public Fenetre(){
@@ -23,8 +24,12 @@ public class Fenetre extends JFrame {
 
         menuBar.add(menu1);
         setJMenuBar(menuBar);
+        JPanel panel = new JPanel();
+        panel.setLayout(new FlowLayout());
+        JLabel coucou = new JLabel("Bonjour et bienvenue, garce à cette application vous pouvez créer des alarmes ");
+        panel.add(coucou);
 
-
+        setContentPane(panel);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
