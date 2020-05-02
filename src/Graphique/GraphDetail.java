@@ -34,8 +34,10 @@ public class GraphDetail extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource()==fini){
+            System.out.println(this.event.getLocation().getEvents());
             Graph.removeButton(this.b);
             this.event.getLocation().removeEvent(this.event);
+            System.out.println(this.event.getLocation().getEvents());
             this.dispose();
         }
     }

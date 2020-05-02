@@ -4,5 +4,4 @@ public class GazEvent extends EventAbstract{
         super(source,location,level);
         this.typeGaz=typeGaz;
     }
-
 }

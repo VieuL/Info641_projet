@@ -10,13 +10,14 @@ public class GraphRadio extends AbstractAction {
     }
 
     public void actionPerformed(ActionEvent e) {
-//            JOptionPane.showMessageDialog(fenetre, "Ce programme a été développé par <Nom du développeur>");
+//     JOptionPane.showMessageDialog(fenetre, "Ce programme a été développé par <Nom du développeur>");
         JPanel pan = new JPanel();
         //Définition de sa couleur de fond
         pan.setBackground(Color.GREEN);
         //On prévient notre JFrame que notre JPanel sera son content pane
         this.fenetre.setContentPane(pan);
         this.fenetre.setVisible(true);
+
 
     }
 }

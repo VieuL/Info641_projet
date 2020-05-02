@@ -2,7 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Fenetre extends JFrame {
-
+    private String batAlarme;
+    private int niveauAlarme;
     public Fenetre(){
         this.setTitle("Activation des alarmes");
         this.setSize(getToolkit().getScreenSize());
@@ -21,8 +22,16 @@ public class Fenetre extends JFrame {
         JMenuItem radio = new JMenuItem(new GraphRadio(this, "Alarme de type radioactivité"));
         menu1.add(radio);
 
+        //menu batiment
+        JMenu menu2 = new JMenu("Choix du batiments");
 
+        for(int nbreBatiment=0; nbreBatiment<Batiment.liste.size();nbreBatiment++) {
+
+            menu2.add(new JMenuItem(new GraphBatiment(this, Batiment.liste.get(nbreBatiment).getNom(),Batiment.liste.get(nbreBatiment))));
+
+        }
         menuBar.add(menu1);
+        menuBar.add(menu2);
         setJMenuBar(menuBar);
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout());
@@ -35,5 +44,18 @@ public class Fenetre extends JFrame {
 
         this.setVisible(true);
     }
+    public void setbatAlarmee(String form){
+        this.batAlarme = form;
+    }
+    public void setNiveauAlarme(int form){
+        this.niveauAlarme = form;
+    }
 
+    public String getBatAlarme() {
+        return batAlarme;
+    }
+
+    public int getNiveauAlarme() {
+        return niveauAlarme;
+    }
 }

@@ -18,6 +18,11 @@ abstract class EventAbstract extends EventObject {
     }
     public  String toString(){
         return "Event produit : "+String.valueOf(this.date.getTime())
-                +"\nsitué à "+this.location.getNom()+" de niveau "+String.valueOf(level);
+                +"\nsitué à "+this.location.getNom()+" de niveau "+String.valueOf(level)+"\n";
     }
+
+    public Batiment getLocation() {
+        return location;
+    }
+
 }
