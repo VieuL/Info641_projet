@@ -4,6 +4,7 @@ import java.awt.*;
 public class Fenetre extends JFrame {
     private String batAlarme;
     private int niveauAlarme;
+    private String typeG;
     public Fenetre(){
         this.setTitle("Application");
         this.setSize(getToolkit().getScreenSize());
@@ -49,12 +50,18 @@ public class Fenetre extends JFrame {
     public void setNiveauAlarme(int form){
         this.niveauAlarme = form;
     }
-
     public String getBatAlarme() {
         return batAlarme;
     }
-
     public int getNiveauAlarme() {
         return niveauAlarme;
+    }
+
+    public String getTypeG() {
+        return typeG;
+    }
+
+    public void setTypeG(String typeG) {
+        this.typeG = typeG;
     }
 }
