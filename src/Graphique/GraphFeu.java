@@ -5,18 +5,25 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.HashMap;
+/*
+pane.setLayout(new GridBagLayout());
+GridBagConstraints c = new GridBagConstraints();
+*/
 
 public class GraphFeu extends AbstractAction {
+    private int µ = 0;
     private HashMap<String,Batiment> batim = new HashMap<>();
 
     private Fenetre fenetre;
     private JComboBox choix = new JComboBox();
     private JLabel label = new JLabel("Choix du batiement");
 
-    private JPanel titre = new JPanel();
-    private JPanel bat = new JPanel();
-    private JPanel grpRadio = new JPanel();
-    private JPanel bou = new JPanel();
+    private JPanel titre = new JPanel(new GridBagLayout());
+    private JPanel bat = new JPanel(new GridBagLayout());
+
+    private JPanel grpRadio = new JPanel(new GridBagLayout());
+    GridBagConstraints c = new GridBagConstraints();
+    private JPanel bou = new JPanel(new GridBagLayout());
 
     private ButtonGroup bgRadio = new ButtonGroup();
     private JRadioButton case1 = new JRadioButton("Niveau 1");
@@ -25,19 +32,28 @@ public class GraphFeu extends AbstractAction {
 
     private JButton valider = new JButton("Valider");
 
+    GridBagConstraints d = new GridBagConstraints();
+    GridBagConstraints f = new GridBagConstraints();
     public GraphFeu(Fenetre fenetre, String texte) {
+
         super(texte);
         this.fenetre = fenetre;
     }
 
     public void actionPerformed(ActionEvent e) {
+        fenetre.remove(titre);
         fenetre.setTitle("Incendie");
         fenetre.setLocationRelativeTo(null);
-
+        c.fill = GridBagConstraints.HORIZONTAL;
+        d.fill = GridBagConstraints.HORIZONTAL;
+        f.fill = GridBagConstraints.HORIZONTAL;
         bat.setLayout(new BoxLayout(bat, BoxLayout.Y_AXIS));
 
         // creation de la combo - Box
-        choixBat();
+        if(µ==0) {
+            choixBat();
+            µ++;
+        }
         choix.setMaximumSize(new Dimension(120, 50));
         choix.add(label);
         choix.addActionListener(new ItemAction());
@@ -60,18 +76,34 @@ public class GraphFeu extends AbstractAction {
 
         // Crétion du boutton valider
         valider.addActionListener(new ButtonListener());
+        bou.setLayout(new BoxLayout(bou, BoxLayout.Y_AXIS));
         bou.add(valider);
 
         // ------------------------------------------------------------
-        titre.setPreferredSize(new Dimension(300, 220));
-        titre.setLayout(new BoxLayout(titre, BoxLayout.Y_AXIS));
+        titre.setPreferredSize(new Dimension(1000, 1000));
+//        titre.setLayout(new BoxLayout(titre, BoxLayout.Y_AXIS));
         titre.setBorder(BorderFactory.createTitledBorder(" Pour créer une alarme pour le feu veuillez remplir le formulaire suivant "));
+//        c.fill = GridBagConstraints.HORIZONTAL;
+//        c.ipady = 0;       //reset to default
+//        c.weighty = 1.0;   //request any extra vertical space
+//        c.anchor = GridBagConstraints.PAGE_START; //bottom of space
+//        c.insets = new Insets(10,50,0,50);  //top padding
+//        c.gridx = 0;       //aligned with button 2
+//        c.gridwidth = 2;   //2 columns wide
+//        c.gridy = 10;
+//        d.gridy = 200;       //third row
+//        d.gridx = 0;       //aligned with button 2
+//        f.gridy = 20;
+//        f.gridx = 0;       //aligned with button 2
+//        c.gridwidth = 2;   //2 columns wide
 
+        titre.add(bat,c);
+        titre.add(grpRadio,d);
+        titre.add(bou,f);
 
-        titre.add(bat);
-        titre.add(grpRadio);
-        titre.add(bou);
-
+//        fenetre.add(bat);
+//        fenetre.add(grpRadio,c);
+//        fenetre.add(bou);
 
         fenetre.setContentPane(titre);
         fenetre.setVisible(true);
@@ -80,6 +112,7 @@ public class GraphFeu extends AbstractAction {
 
     private void choixBat() {
         choix.setPreferredSize(new Dimension(100, 20));
+        choix.addItem("choix du bâtiment");
         for (Batiment a : Batiment.liste) {
             choix.addItem(a.getNom());
             batim.put(a.getNom(),a);
@@ -92,44 +125,22 @@ public class GraphFeu extends AbstractAction {
         public void actionPerformed(ActionEvent e) {
             fenetre.setbatAlarmee(choix.getSelectedItem().toString());
             System.out.println(fenetre.getBatAlarme());
-
         }
     }
+
 
     class RadioListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             fenetre.setNiveauAlarme(Integer.parseInt(Character.toString(e.getActionCommand().charAt(e.getActionCommand().length() - 1))));
             System.out.println("Radios changées - nouvelle valeur : " + fenetre.getNiveauAlarme());
         }
-
-
     }
+
 
     class ButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             CréationAlarme alarme = new CréationAlarme();
             alarme.getIncendieG().generateIncendieEvent(batim.get(fenetre.getBatAlarme()),fenetre.getNiveauAlarme());
         }
-
-
     }
 }
-/*
-        //Définition de sa couleur de fond
-        fenetre.setTitle("Alarme de type Feu");
-        pan.setLayout(new BorderLayout());
-        pan.setBackground(new Color(255,255,224));
-        fenetre.setLocationRelativeTo(null);
-        //On prévient notre JFrame que notre JPanel sera son content pane
-        pan.setLayout(new FlowLayout());
-        JLabel coucou = new JLabel("Pour créer une alarme pour le feu veuillez remplir le formulaire suivant");
-        pan2.setPreferredSize(new Dimension(100, 20));
-        pan2.setLayout(new BoxLayout(pan2, BoxLayout.Y_AXIS));
-        choixBat();
-        choix.addActionListener(new ItemAction());
-        pan.add(coucou);
-        pan2.add(choix);
-        this.fenetre.setContentPane(pan);
-        this.fenetre.setContentPane(pan2);
-        this.fenetre.setVisible(true);
- */
