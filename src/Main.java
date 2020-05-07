@@ -11,6 +11,7 @@ public class Main {
         // Création d'évènement
         CréationAlarme alarme = new CréationAlarme();
         alarme.getGazG().generateGazEvent(A,3, "CO");
+        alarme.getIncendieG().generateIncendieEvent(B,3);
 
         ArrayList<Batiment> a = Batiment.liste;
         System.out.println(a);

@@ -5,7 +5,7 @@ public class Fenetre extends JFrame {
     private String batAlarme;
     private int niveauAlarme;
     public Fenetre(){
-        this.setTitle("Activation des alarmes");
+        this.setTitle("Application");
         this.setSize(getToolkit().getScreenSize());
 
 
@@ -23,8 +23,7 @@ public class Fenetre extends JFrame {
         menu1.add(radio);
 
         //menu batiment
-        JMenu menu2 = new JMenu("Choix du batiments");
-
+        JMenu menu2 = new JMenu("Menu des batiments");
         for(int nbreBatiment=0; nbreBatiment<Batiment.liste.size();nbreBatiment++) {
 
             menu2.add(new JMenuItem(new GraphBatiment(this, Batiment.liste.get(nbreBatiment).getNom(),Batiment.liste.get(nbreBatiment))));

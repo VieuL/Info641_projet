@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 public class GraphDetail extends JFrame implements ActionListener {
 
-    private String texte;
+
     private JButton fini =new JButton("Event terminer");
     private EventAbstract event;
     private GraphBatiment Graph;
@@ -24,21 +24,21 @@ public class GraphDetail extends JFrame implements ActionListener {
        this.add(area,BorderLayout.CENTER);
         //ajout au listener
        fini.addActionListener(this);
-
        this.add(fini,BorderLayout.SOUTH);
        this.setLocationRelativeTo(null);
        this.setVisible(true);
 
    }
 
+
+
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource()==fini){
-            System.out.println(this.event.getLocation().getEvents());
-            Graph.removeButton(this.b);
             this.event.getLocation().removeEvent(this.event);
-            System.out.println(this.event.getLocation().getEvents());
+            Graph.removeButton(this.b);
             this.dispose();
+
         }
     }
 }
