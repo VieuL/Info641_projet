@@ -80,9 +80,11 @@ public class GraphFeu extends AbstractAction {
         bou.add(valider);
 
         // ------------------------------------------------------------
-        titre.setPreferredSize(new Dimension(1000, 1000));
+//        titre.setPreferredSize(new Dimension(0, 0));
 //        titre.setLayout(new BoxLayout(titre, BoxLayout.Y_AXIS));
         titre.setBorder(BorderFactory.createTitledBorder(" Pour créer une alarme pour le feu veuillez remplir le formulaire suivant "));
+        grpRadio.setBorder(BorderFactory.createTitledBorder("importance  "));
+        bat.setBorder(BorderFactory.createTitledBorder(" localisation "));
 //        c.fill = GridBagConstraints.HORIZONTAL;
 //        c.ipady = 0;       //reset to default
 //        c.weighty = 1.0;   //request any extra vertical space

@@ -34,7 +34,6 @@ public class GraphGaz extends AbstractAction {
 
 	public GraphGaz(Fenetre fenetre, String texte){
             super(texte);
-
             this.fenetre = fenetre;
         }
 
@@ -84,11 +83,12 @@ public class GraphGaz extends AbstractAction {
 
 
             // ------------------------------------------------------------
-            titre.setPreferredSize(new Dimension(1000, 1000));
+//            titre.setPreferredSize(new Dimension(1000, 1000));
 //        titre.setLayout(new BoxLayout(titre, BoxLayout.Y_AXIS));
             titre.setBorder(BorderFactory.createTitledBorder(" Pour créer une alarme pour le gaz veuillez remplir le formulaire suivant "));
             txt.setBorder(BorderFactory.createTitledBorder(" Nom du gaz "));
-
+            grpRadio.setBorder(BorderFactory.createTitledBorder("importance  "));
+            bat.setBorder(BorderFactory.createTitledBorder("localisation "));
             titre.add(bat);
             titre.add(grpRadio);
             titre.add(txt);

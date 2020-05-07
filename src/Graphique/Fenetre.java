@@ -5,6 +5,7 @@ public class Fenetre extends JFrame {
     private String batAlarme;
     private int niveauAlarme;
     private String typeG;
+    private int radioV;
     public Fenetre(){
         this.setTitle("Application");
         this.setSize(getToolkit().getScreenSize());
@@ -63,5 +64,13 @@ public class Fenetre extends JFrame {
 
     public void setTypeG(String typeG) {
         this.typeG = typeG;
+    }
+
+    public int getRadioV() {
+        return radioV;
+    }
+
+    public void setRadioV(int µ){
+        this.radioV = µ;
     }
 }
