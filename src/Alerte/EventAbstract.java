@@ -25,4 +25,8 @@ abstract class EventAbstract extends EventObject {
         return location;
     }
 
+    public  String affichageBatiment(){
+        return "Date : "+String.valueOf(this.date.getTime());
+    }
+
 }

@@ -7,16 +7,17 @@ import java.util.ArrayList;
 public class GraphBatiment extends AbstractAction implements ActionListener {
 
     private Fenetre fenetre;
-    private JPanel pan;
+
     private ArrayList<JButton>jButtons;
     private Batiment batiment;
 
     public GraphBatiment(Fenetre fenetre, String texte,Batiment batiment){
         super(texte);
         this.batiment=batiment;
-        pan = new JPanel();
-        jButtons=new ArrayList<JButton>();
+
+        jButtons=new ArrayList<>();
         this.fenetre = fenetre;
+
     }
 
     @Override
@@ -29,10 +30,11 @@ public class GraphBatiment extends AbstractAction implements ActionListener {
         }
     }
     public void actualisation() {
-        
-        pan.setLayout(new FlowLayout());
+        JPanel pan = new JPanel();
+        pan.setLayout(new GridBagLayout());
+
         for (int i = 0; i < batiment.getEvents().size(); i++) {
-            jButtons.add(new JButton("Détail evenement " +batiment.getEvents().get(i).toString()));
+            jButtons.add(new JButton("Détail evenement " +batiment.getEvents().get(i).affichageBatiment()));
             pan.add(jButtons.get(i));
             jButtons.get(i).addActionListener(this);
         }
@@ -42,12 +44,14 @@ public class GraphBatiment extends AbstractAction implements ActionListener {
 
     public void removeButton(JButton b){
         jButtons.remove(b);
+        this.actualisation();
 
     }
     public void addButton(EventAbstract event){
 
          jButtons.add(new JButton("Détail evenement " +event.toString()));
-         pan.add(jButtons.get(jButtons.size()-1));
          jButtons.get(jButtons.size()-1).addActionListener(this);
+         this.actualisation();
+
     }
 }
