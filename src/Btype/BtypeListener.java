@@ -5,8 +5,10 @@ public class BtypeListener implements BtypeInterface{
     @Override
     public void Btype(EventObject eo) {
         if(eo instanceof GazEvent){
-            System.out.println("B type Gaz");
-            ((GazEvent) eo).getLocation().addEvent((GazEvent)eo);
+            if(!(((GazEvent) eo).getLocation().getEvents().contains(eo))) {
+                System.out.println("B type Gaz");
+                ((GazEvent) eo).getLocation().addEvent((GazEvent) eo);
+            }
         }
         if (eo instanceof RadiationEvent){
             System.out.println("B type RAD");
