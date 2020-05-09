@@ -29,4 +29,21 @@ abstract class EventAbstract extends EventObject {
         return "Date : "+String.valueOf(this.date.getTime());
     }
 
+    public GregorianCalendar getDate() {
+        return date;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    @Override
+    public Object getSource() {
+        return super.getSource();
+    }
+
+    public String getType(){
+        return "";
+    }
+
 }

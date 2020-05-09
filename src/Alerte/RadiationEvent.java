@@ -9,5 +9,11 @@ public class RadiationEvent extends EventAbstract{
             throw new ExceptionInInitializerError();
         }
     }
+    public  String toString(){
+        return "Event produit : "+ String.valueOf(radiation);
+    }
+    public String getType(){
+        return "Radiation";
+    }
 }
 

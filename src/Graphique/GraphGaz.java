@@ -32,76 +32,76 @@ public class GraphGaz extends AbstractAction {
     //Pour la zone de texte
     JTextField textField = new JTextField();
 
-	public GraphGaz(Fenetre fenetre, String texte){
-            super(texte);
-            this.fenetre = fenetre;
+    public GraphGaz(Fenetre fenetre, String texte){
+        super(texte);
+        this.fenetre = fenetre;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        fenetre.remove(titre);
+        fenetre.setTitle("Gaz");
+        fenetre.setLocationRelativeTo(null);
+
+        bat.setLayout(new BoxLayout(bat, BoxLayout.Y_AXIS));
+
+        // creation de la combo - Box
+        if(µ==0) {
+            choixBat();
+            µ++;
         }
-
-        public void actionPerformed(ActionEvent e) {
-            fenetre.remove(titre);
-            fenetre.setTitle("Gaz");
-            fenetre.setLocationRelativeTo(null);
-
-            bat.setLayout(new BoxLayout(bat, BoxLayout.Y_AXIS));
-
-            // creation de la combo - Box
-            if(µ==0) {
-                choixBat();
-                µ++;
-            }
-            choix.setMaximumSize(new Dimension(120, 50));
-            choix.add(label);
-            choix.addActionListener(new GraphGaz.ItemAction());
-            bat.add(choix);
+        choix.setMaximumSize(new Dimension(120, 50));
+        choix.add(label);
+        choix.addActionListener(new GraphGaz.ItemAction());
+        bat.add(choix);
 
 
-            // Création d'une check box
-            grpRadio.setLayout(new BoxLayout(grpRadio, BoxLayout.Y_AXIS));
-            bgRadio.add(case1);
-            bgRadio.add(case2);
-            bgRadio.add(case3);
+        // Création d'une check box
+        grpRadio.setLayout(new BoxLayout(grpRadio, BoxLayout.Y_AXIS));
+        bgRadio.add(case1);
+        bgRadio.add(case2);
+        bgRadio.add(case3);
 
-            case1.addActionListener(new GraphGaz.RadioListener());
-            case2.addActionListener(new GraphGaz.RadioListener());
-            case3.addActionListener(new GraphGaz.RadioListener());
+        case1.addActionListener(new GraphGaz.RadioListener());
+        case2.addActionListener(new GraphGaz.RadioListener());
+        case3.addActionListener(new GraphGaz.RadioListener());
 
-            grpRadio.add(case1);
-            grpRadio.add(case2);
-            grpRadio.add(case3);
+        grpRadio.add(case1);
+        grpRadio.add(case2);
+        grpRadio.add(case3);
 
-            // Crétion du boutton valider
-            valider.addActionListener(new GraphGaz.ButtonListener());
-            bou.setLayout(new BoxLayout(bou, BoxLayout.Y_AXIS));
-            bou.add(valider);
+        // Crétion du boutton valider
+        valider.addActionListener(new GraphGaz.ButtonListener());
+        bou.setLayout(new BoxLayout(bou, BoxLayout.Y_AXIS));
+        bou.add(valider);
 
-            textField.setColumns(10);
+        textField.setColumns(10);
 
-            txt.setLayout(new FlowLayout());
-            txt.add(textField);
+        txt.setLayout(new FlowLayout());
+        txt.add(textField);
 
 
 
 
-            // ------------------------------------------------------------
+        // ------------------------------------------------------------
 //            titre.setPreferredSize(new Dimension(1000, 1000));
 //        titre.setLayout(new BoxLayout(titre, BoxLayout.Y_AXIS));
-            titre.setBorder(BorderFactory.createTitledBorder(" Pour créer une alarme pour le gaz veuillez remplir le formulaire suivant "));
-            txt.setBorder(BorderFactory.createTitledBorder(" Nom du gaz "));
-            grpRadio.setBorder(BorderFactory.createTitledBorder("importance  "));
-            bat.setBorder(BorderFactory.createTitledBorder("localisation "));
-            titre.add(bat);
-            titre.add(grpRadio);
-            titre.add(txt);
-            titre.add(bou);
+        titre.setBorder(BorderFactory.createTitledBorder(" Pour créer une alarme pour le gaz veuillez remplir le formulaire suivant "));
+        txt.setBorder(BorderFactory.createTitledBorder(" Nom du gaz "));
+        grpRadio.setBorder(BorderFactory.createTitledBorder("importance  "));
+        bat.setBorder(BorderFactory.createTitledBorder("localisation "));
+        titre.add(bat);
+        titre.add(grpRadio);
+        titre.add(txt);
+        titre.add(bou);
 
 
 
-            fenetre.setContentPane(titre);
-            fenetre.setVisible(true);
+        fenetre.setContentPane(titre);
+        fenetre.setVisible(true);
 
 
 
-        }
+    }
 
     private void choixBat() {
         choix.setPreferredSize(new Dimension(100, 20));
@@ -139,5 +139,5 @@ public class GraphGaz extends AbstractAction {
     }
 
 
-    }
+}
 

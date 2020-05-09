@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class GraphDetail extends JFrame implements ActionListener {
 
@@ -23,9 +22,10 @@ public class GraphDetail extends JFrame implements ActionListener {
        this.setLayout(new BorderLayout());
        JTextArea area = new JTextArea(texte);
        this.add(area,BorderLayout.CENTER);
-        //ajout au listener
+       //ajout au listener
        fini.addActionListener(this);
        this.add(fini,BorderLayout.SOUTH);
+
        this.setLocationRelativeTo(null);
        this.setVisible(true);
 
@@ -38,11 +38,9 @@ public class GraphDetail extends JFrame implements ActionListener {
         if (e.getSource()==fini){
             this.event.getLocation().removeEvent(this.event);
             Graph.removeButton(this.b);
+            this.setVisible(false);
             this.dispose();
+
         }
-
-
     }
-
-
 }

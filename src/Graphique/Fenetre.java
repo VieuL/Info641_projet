@@ -31,8 +31,17 @@ public class Fenetre extends JFrame {
             menu2.add(new JMenuItem(new GraphBatiment(this, Batiment.liste.get(nbreBatiment).getNom(),Batiment.liste.get(nbreBatiment))));
 
         }
+        //Menu Type
+        JMenu menu3 = new JMenu("Type");
+
+        JMenuItem TypeA = new JMenuItem(new GraphTypeA(this,"Type A"));
+        menu3.add(TypeA);
+        JMenuItem TypeB = new JMenuItem(new GraphTypeA(this,"Type B"));
+        menu3.add(TypeB);
+
         menuBar.add(menu1);
         menuBar.add(menu2);
+        menuBar.add(menu3);
         setJMenuBar(menuBar);
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout());

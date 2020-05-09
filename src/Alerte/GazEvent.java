@@ -8,4 +8,7 @@ public class GazEvent extends EventAbstract{
     public String getTypeGaz() {
         return typeGaz;
     }
+    public String getType(){
+        return "Gaz";
+    }
 }
