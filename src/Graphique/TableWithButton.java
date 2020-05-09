@@ -1,25 +1,27 @@
 import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import javax.swing.table.TableCellRenderer;
 
 
 public class TableWithButton extends JPanel {
-
+    private JTable table;
     public TableWithButton(Object[][] data,String[]title){
 
-
-
         //Creation Jtable
-        JTable table=new JTable(data,title);
+        table=new JTable(data,title);
         table.getColumnModel().getColumn(4).setCellRenderer(new ButtonRenderer());
-        table.getColumnModel().getColumn(4).setCellEditor(new ButtonEditor(new JTextField(),table));
+        table.getColumnModel().getColumn(4).setCellEditor(new ButtonEditor(new JTextField(),this ));
 
         //ajout du scroll
         JScrollPane pane=new JScrollPane(table);
         this.add(pane);
+    }
+    public JTable getTable() {
+        return table;
+    }
+    public void refresh(){
+        this.revalidate();
     }
 }
 
@@ -45,17 +47,19 @@ class ButtonEditor extends DefaultCellEditor{
     protected JButton btn;
     private String lbl;
     private Boolean clicked;
-    private  JTable table;
+    private  TableWithButton pan;
 
-    public ButtonEditor(JTextField txt,JTable table) {
+    public ButtonEditor(JTextField txt,TableWithButton pan) {
         super(txt);
-        this.table=table;
+        this.pan=pan;
         btn=new JButton();
 
 
         //WHEN BUTTON IS CLICKED
         btn.addActionListener(e -> fireEditingStopped());
     }
+
+
 
     //OVERRIDE A COUPLE OF METHODS
     @Override
@@ -77,10 +81,13 @@ class ButtonEditor extends DefaultCellEditor{
         {
 
             //info bulle (renvoie 1 ou 0)
-            if (JOptionPane.showConfirmDialog(null, AtypeListener.events.get(table.getSelectedRow()).toString()+"\nEvenement terminé ?", "Detail",
+            if (JOptionPane.showConfirmDialog(null, AtypeListener.events.get(this.pan.getTable().getSelectedRow()).toString()+"\nEvenement terminé ?", "Detail",
                     JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 //supprimer evenement
-                AtypeListener.events.remove(table.getSelectedRow());
+                AtypeListener.events.remove(this.pan.getTable().getSelectedRow());
+                this.pan.getTable().remove(this.pan.getTable().getSelectedRow());
+
+
             } else {
                 // On fait rien
             }
