@@ -9,11 +9,20 @@ public class RadiationEvent extends EventAbstract{
             throw new ExceptionInInitializerError();
         }
     }
-    public  String toString(){
-        return "Event produit : "+ String.valueOf(radiation);
-    }
     public String getType(){
         return "Radiation";
     }
+
+    public int getRadiation() {
+        return radiation;
+    }
+
+    public  String toString(){
+        return "événement produit à : "+ super.getDate().getTime()
+                +"\nsitué dans le  "+super.getLocation().getNom()
+                +"\n de niveau "+ super.getLevel()
+                +" et de radioactivité : "+this.getRadiation();
+    }
+
 }
 

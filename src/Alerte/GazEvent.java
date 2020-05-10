@@ -8,6 +8,13 @@ public class GazEvent extends EventAbstract{
     public String getTypeGaz() {
         return typeGaz;
     }
+
+    public  String toString(){
+        return "événement produit à : "+ super.getDate().getTime()
+                +"\nsitué dans le  "+super.getLocation().getNom()
+                +"\n de niveau "+ super.getLevel()
+                +" de type : "+this.getTypeGaz();
+    }
     public String getType(){
         return "Gaz";
     }

@@ -35,13 +35,17 @@ public class Batiment {
         return events;
     }
 
-    public void removeEvent(EventAbstract e) {
-        events.remove(e);
-
-    }
-
     public void addEvent(EventAbstract e){
         events.add(e);
+    }
+
+    public static  void removeAllBatiment(EventAbstract e){
+            for( Batiment batiment:liste){
+                if(batiment.getEvents().contains(e)){
+                    batiment.getEvents().remove(e);
+                }
+            }
+
     }
 
 }

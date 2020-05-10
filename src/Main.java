@@ -10,14 +10,12 @@ public class Main {
 
         // Création d'évènement
         CréationAlarme alarme = new CréationAlarme();
-
+        alarme.getIncendieG().generateIncendieEvent(B,3);
+        alarme.getRadiationG().generateRadiationEvent(A,1,50);
         alarme.getGazG().generateGazEvent(A,1, "CO");
         alarme.getGazG().generateGazEvent(A,2, "CO");
         alarme.getGazG().generateGazEvent(A,3, "CO");
-        alarme.getIncendieG().generateIncendieEvent(A,3);
-
-        ArrayList<Batiment> a = Batiment.liste;
-        System.out.println(a);
+        //Creation de la fenetre
         Fenetre fen = new Fenetre();
     }
 }

@@ -17,17 +17,15 @@ abstract class EventAbstract extends EventObject {
         }
     }
     public  String toString(){
-        return "Event produit : "+String.valueOf(this.date.getTime())
-                +"\nsitué à "+this.location.getNom()+" de niveau "+String.valueOf(level)+"\n";
+        return "événement produit à : "+ this.getDate().getTime()
+                +"\nsitué dans le  "+this.getLocation().getNom()
+                +" et de niveau "+ this.getLevel();
     }
 
     public Batiment getLocation() {
         return location;
     }
 
-    public  String affichageBatiment(){
-        return "Date : "+String.valueOf(this.date.getTime());
-    }
 
     public GregorianCalendar getDate() {
         return date;

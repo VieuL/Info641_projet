@@ -6,11 +6,13 @@ public class Fenetre extends JFrame {
     private int niveauAlarme;
     private String typeG;
     private int radioV;
+
     public Fenetre(){
+
         this.setTitle("Application");
         this.setSize(getToolkit().getScreenSize());
 
-
+        //Menu des alarmes
         JMenuBar menuBar = new JMenuBar();
         JMenu menu1 = new JMenu("Déclancher une alarme");
 
@@ -24,45 +26,52 @@ public class Fenetre extends JFrame {
         JMenuItem radio = new JMenuItem(new GraphRadio(this, "Alarme de type radioactivité"));
         menu1.add(radio);
 
-        //menu batiment
+        //Menu batiment
         JMenu menu2 = new JMenu("Menu des batiments");
         for(int nbreBatiment=0; nbreBatiment<Batiment.liste.size();nbreBatiment++) {
 
             menu2.add(new JMenuItem(new GraphBatiment(this, Batiment.liste.get(nbreBatiment).getNom(),Batiment.liste.get(nbreBatiment))));
 
         }
-        //Menu Type
-        JMenu menu3 = new JMenu("Type");
+        //Menu des differents type d'alarme
+        JMenu menu3 = new JMenu("Type  Alarme");
 
-        JMenuItem TypeA = new JMenuItem(new GraphTypeA(this,"Type A"));
+        JMenuItem TypeA = new JMenuItem(new GraphTypeA(this,"Type A",AtypeListener.events));
         menu3.add(TypeA);
-        JMenuItem TypeB = new JMenuItem(new GraphTypeA(this,"Type B"));
+
+        JMenuItem TypeB = new JMenuItem(new GraphTypeA(this,"Type B",BtypeListener.events));
         menu3.add(TypeB);
 
         menuBar.add(menu1);
         menuBar.add(menu2);
         menuBar.add(menu3);
         setJMenuBar(menuBar);
+
+        //page  principale
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout());
-        JLabel coucou = new JLabel("Bonjour et bienvenue, garce à cette application vous pouvez créer des alarmes ");
+
+        JLabel coucou = new JLabel("Bonjour et bienvenue, grace à cette application vous pouvez créer des alarmes et les visualiser ");
         panel.add(coucou);
 
         setContentPane(panel);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         this.setVisible(true);
     }
+
     public void setbatAlarmee(String form){
         this.batAlarme = form;
     }
+
     public void setNiveauAlarme(int form){
         this.niveauAlarme = form;
     }
+
     public String getBatAlarme() {
         return batAlarme;
     }
+
     public int getNiveauAlarme() {
         return niveauAlarme;
     }
