@@ -24,9 +24,9 @@ public class GraphRadio extends AbstractAction {
 
     // Pour les radio
     private ButtonGroup bgRadio = new ButtonGroup();
-    private JRadioButton case1 = new JRadioButton("Niveau 1");
-    private JRadioButton case2 = new JRadioButton("Niveau 2");
-    private JRadioButton case3 = new JRadioButton("Niveau 3");
+    private JRadioButton case1 = new JRadioButton("Niveau 1     ");
+    private JRadioButton case2 = new JRadioButton("Niveau 2     ");
+    private JRadioButton case3 = new JRadioButton("Niveau 3     ");
 
     // Pour le boutton
     private JButton valider = new JButton("Valider");
@@ -34,7 +34,7 @@ public class GraphRadio extends AbstractAction {
 
     // Slider
 
-    private JLabel labelSlide = new JLabel("Slider : ");
+    private JLabel labelSlide = new JLabel("Niveau : ");
     private JSlider slide = new JSlider(0, 100);
     private JProgressBar progressBar = new JProgressBar(0, 100);
     private JLabel pourcentage = new JLabel("0");
@@ -63,6 +63,7 @@ public class GraphRadio extends AbstractAction {
 
 
         // Création d'une check box
+        grpRadio.setMaximumSize(new Dimension(100, 100));
         grpRadio.setLayout(new BoxLayout(grpRadio, BoxLayout.Y_AXIS));
         bgRadio.add(case1);
         bgRadio.add(case2);
@@ -119,7 +120,7 @@ public class GraphRadio extends AbstractAction {
 //        titre.setLayout(new BoxLayout(titre, BoxLayout.Y_AXIS));
         titre.setBorder(BorderFactory.createTitledBorder(" Pour créer une alarme pour le radioactivité veuillez remplir le formulaire suivant "));
         sli.setBorder(BorderFactory.createTitledBorder(" niveau de radiation "));
-        grpRadio.setBorder(BorderFactory.createTitledBorder(" niveau d’importance  "));
+        grpRadio.setBorder(BorderFactory.createTitledBorder(" Importance  "));
         bat.setBorder(BorderFactory.createTitledBorder(" localisation "));
 
         titre.add(bat);

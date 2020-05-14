@@ -14,17 +14,17 @@ public class GraphGaz extends AbstractAction {
     private JLabel label = new JLabel("Choix du batiement");
 
     // Création de Jpanel
-    private JPanel titre = new JPanel(new GridBagLayout());
-    private JPanel bat = new JPanel(new GridBagLayout());
-    private JPanel grpRadio = new JPanel(new GridBagLayout());
-    private JPanel bou = new JPanel(new GridBagLayout());
+    private JPanel titre = new JPanel();
+    private JPanel bat = new JPanel();
+    private JPanel grpRadio = new JPanel();
+    private JPanel bou = new JPanel();
     private JPanel txt = new JPanel();
 
     // Pour les radio
     private ButtonGroup bgRadio = new ButtonGroup();
-    private JRadioButton case1 = new JRadioButton("Niveau 1");
-    private JRadioButton case2 = new JRadioButton("Niveau 2");
-    private JRadioButton case3 = new JRadioButton("Niveau 3");
+    private JRadioButton case1 = new JRadioButton("Niveau 1     ");
+    private JRadioButton case2 = new JRadioButton("Niveau 2     ");
+    private JRadioButton case3 = new JRadioButton("Niveau 3     ");
 
     // Pour le boutton
     private JButton valider = new JButton("Valider");
@@ -42,6 +42,7 @@ public class GraphGaz extends AbstractAction {
         fenetre.setTitle("Gaz");
         fenetre.setLocationRelativeTo(null);
 
+        bat.setMaximumSize(new Dimension(400, 200));
         bat.setLayout(new BoxLayout(bat, BoxLayout.Y_AXIS));
 
         // creation de la combo - Box
@@ -49,13 +50,16 @@ public class GraphGaz extends AbstractAction {
             choixBat();
             µ++;
         }
-        choix.setMaximumSize(new Dimension(120, 50));
+
         choix.add(label);
         choix.addActionListener(new GraphGaz.ItemAction());
+
         bat.add(choix);
 
 
         // Création d'une check box
+        grpRadio.setMaximumSize(new Dimension(100, 100));
+
         grpRadio.setLayout(new BoxLayout(grpRadio, BoxLayout.Y_AXIS));
         bgRadio.add(case1);
         bgRadio.add(case2);

@@ -18,22 +18,19 @@ public class GraphFeu extends AbstractAction {
     private JComboBox choix = new JComboBox();
     private JLabel label = new JLabel("Choix du batiement");
 
-    private JPanel titre = new JPanel(new GridBagLayout());
-    private JPanel bat = new JPanel(new GridBagLayout());
+    private JPanel titre = new JPanel();
+    private JPanel bat = new JPanel();
 
-    private JPanel grpRadio = new JPanel(new GridBagLayout());
-    GridBagConstraints c = new GridBagConstraints();
-    private JPanel bou = new JPanel(new GridBagLayout());
+    private JPanel grpRadio = new JPanel();
+    private JPanel bou = new JPanel();
 
     private ButtonGroup bgRadio = new ButtonGroup();
-    private JRadioButton case1 = new JRadioButton("Niveau 1");
-    private JRadioButton case2 = new JRadioButton("Niveau 2");
-    private JRadioButton case3 = new JRadioButton("Niveau 3");
+    private JRadioButton case1 = new JRadioButton("Niveau 1     ");
+    private JRadioButton case2 = new JRadioButton("Niveau 2     ");
+    private JRadioButton case3 = new JRadioButton("Niveau 3     ");
 
     private JButton valider = new JButton("Valider");
 
-    GridBagConstraints d = new GridBagConstraints();
-    GridBagConstraints f = new GridBagConstraints();
     public GraphFeu(Fenetre fenetre, String texte) {
 
         super(texte);
@@ -44,9 +41,7 @@ public class GraphFeu extends AbstractAction {
         fenetre.remove(titre);
         fenetre.setTitle("Incendie");
         fenetre.setLocationRelativeTo(null);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        d.fill = GridBagConstraints.HORIZONTAL;
-        f.fill = GridBagConstraints.HORIZONTAL;
+
         bat.setLayout(new BoxLayout(bat, BoxLayout.Y_AXIS));
 
         // creation de la combo - Box
@@ -61,6 +56,7 @@ public class GraphFeu extends AbstractAction {
 
 
         // Création d'une check box
+        grpRadio.setMaximumSize(new Dimension(100, 100));
         grpRadio.setLayout(new BoxLayout(grpRadio, BoxLayout.Y_AXIS));
         bgRadio.add(case1);
         bgRadio.add(case2);
@@ -85,33 +81,20 @@ public class GraphFeu extends AbstractAction {
         titre.setBorder(BorderFactory.createTitledBorder(" Pour créer une alarme pour le feu veuillez remplir le formulaire suivant "));
         grpRadio.setBorder(BorderFactory.createTitledBorder("importance  "));
         bat.setBorder(BorderFactory.createTitledBorder(" localisation "));
-//        c.fill = GridBagConstraints.HORIZONTAL;
-//        c.ipady = 0;       //reset to default
-//        c.weighty = 1.0;   //request any extra vertical space
-//        c.anchor = GridBagConstraints.PAGE_START; //bottom of space
-//        c.insets = new Insets(10,50,0,50);  //top padding
-//        c.gridx = 0;       //aligned with button 2
-//        c.gridwidth = 2;   //2 columns wide
-//        c.gridy = 10;
-//        d.gridy = 200;       //third row
-//        d.gridx = 0;       //aligned with button 2
-//        f.gridy = 20;
-//        f.gridx = 0;       //aligned with button 2
-//        c.gridwidth = 2;   //2 columns wide
 
-        titre.add(bat,c);
-        titre.add(grpRadio,d);
-        titre.add(bou,f);
 
-//        fenetre.add(bat);
-//        fenetre.add(grpRadio,c);
-//        fenetre.add(bou);
+        //Ajout des JPanel secondaire dans le Jpanl princiapale
+        titre.add(bat);
+        titre.add(grpRadio);
+        titre.add(bou);
 
+        // Set le pan dans la fenetre
         fenetre.setContentPane(titre);
         fenetre.setVisible(true);
     }
 
 
+    // Création d'une fonction qui récup les batiment pour crée la liste dérou
     private void choixBat() {
         choix.setPreferredSize(new Dimension(100, 20));
         choix.addItem("choix du bâtiment");
@@ -122,7 +105,8 @@ public class GraphFeu extends AbstractAction {
     }
 
 
-    // Création d'une classe interne
+
+    // Création d'une classe interne actionListener
     class ItemAction implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             fenetre.setbatAlarmee(choix.getSelectedItem().toString());
