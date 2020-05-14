@@ -35,9 +35,10 @@ public class GraphFeu extends AbstractAction {
 
         super(texte);
         this.fenetre = fenetre;
+
     }
 
-    public void actionPerformed(ActionEvent e) {
+    public void rea() {
         fenetre.remove(titre);
         fenetre.setTitle("Incendie");
         fenetre.setLocationRelativeTo(null);
@@ -104,6 +105,10 @@ public class GraphFeu extends AbstractAction {
         }
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        this.rea();
+    }
 
 
     // Création d'une classe interne actionListener
@@ -127,6 +132,7 @@ public class GraphFeu extends AbstractAction {
         public void actionPerformed(ActionEvent e) {
             CréationAlarme alarme = new CréationAlarme();
             alarme.getIncendieG().generateIncendieEvent(batim.get(fenetre.getBatAlarme()),fenetre.getNiveauAlarme());
+            new GraphFeu(fenetre,"feu").rea();
 
         }
     }

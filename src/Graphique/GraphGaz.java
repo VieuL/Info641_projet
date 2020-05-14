@@ -36,7 +36,7 @@ public class GraphGaz extends AbstractAction {
         this.fenetre = fenetre;
     }
 
-    public void actionPerformed(ActionEvent e) {
+    public void rea() {
         fenetre.remove(titre);
         fenetre.setTitle("Gaz");
         fenetre.setLocationRelativeTo(null);
@@ -79,7 +79,7 @@ public class GraphGaz extends AbstractAction {
 
         textField.setColumns(10);
 
-        txt.setLayout(new FlowLayout());
+        textField.setLayout(new FlowLayout());
         txt.add(textField);
 
 
@@ -115,6 +115,11 @@ public class GraphGaz extends AbstractAction {
         }
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        this.rea();
+    }
+
 
     // Création d'une classe interne
     class ItemAction implements ActionListener {
@@ -135,9 +140,10 @@ public class GraphGaz extends AbstractAction {
 
     class ButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            System.out.println(fenetre.getTypeG());
+            System.out.println(textField.getText());
             CréationAlarme alarme = new CréationAlarme();
-            alarme.getGazG().generateGazEvent(batim.get(fenetre.getBatAlarme()),fenetre.getNiveauAlarme(),fenetre.getTypeG());
+            alarme.getGazG().generateGazEvent(batim.get(fenetre.getBatAlarme()),fenetre.getNiveauAlarme(),textField.getText());
+            new GraphGaz(fenetre,"gaz").rea();
         }
     }
 

@@ -44,7 +44,7 @@ public class GraphRadio extends AbstractAction {
         this.fenetre = fenetre;
     }
 
-    public void actionPerformed(ActionEvent e) {
+    public void rea() {
         fenetre.remove(titre);
         fenetre.setTitle("Radioactivité");
         fenetre.setLocationRelativeTo(null);
@@ -145,6 +145,11 @@ public class GraphRadio extends AbstractAction {
         }
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        this.rea();
+    }
+
 
     // Création d'une classe interne
     class ItemAction implements ActionListener {
@@ -167,7 +172,7 @@ public class GraphRadio extends AbstractAction {
         public void actionPerformed(ActionEvent e) {
             CréationAlarme alarme = new CréationAlarme();
             alarme.getRadiationG().generateRadiationEvent(batim.get(fenetre.getBatAlarme()),fenetre.getNiveauAlarme(),fenetre.getRadioV());
-
+            new GraphRadio(fenetre,"radio").rea();
         }
     }
 
