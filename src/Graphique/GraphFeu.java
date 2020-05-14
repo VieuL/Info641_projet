@@ -25,9 +25,9 @@ public class GraphFeu extends AbstractAction {
     private JPanel bou = new JPanel();
 
     private ButtonGroup bgRadio = new ButtonGroup();
-    private JRadioButton case1 = new JRadioButton("Niveau 1     ");
-    private JRadioButton case2 = new JRadioButton("Niveau 2     ");
-    private JRadioButton case3 = new JRadioButton("Niveau 3     ");
+    private JRadioButton case1 = new JRadioButton("Niveau 1");
+    private JRadioButton case2 = new JRadioButton("Niveau 2");
+    private JRadioButton case3 = new JRadioButton("Niveau 3");
 
     private JButton valider = new JButton("Valider");
 
@@ -127,6 +127,7 @@ public class GraphFeu extends AbstractAction {
         public void actionPerformed(ActionEvent e) {
             CréationAlarme alarme = new CréationAlarme();
             alarme.getIncendieG().generateIncendieEvent(batim.get(fenetre.getBatAlarme()),fenetre.getNiveauAlarme());
+
         }
     }
 }

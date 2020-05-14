@@ -24,9 +24,9 @@ public class GraphRadio extends AbstractAction {
 
     // Pour les radio
     private ButtonGroup bgRadio = new ButtonGroup();
-    private JRadioButton case1 = new JRadioButton("Niveau 1     ");
-    private JRadioButton case2 = new JRadioButton("Niveau 2     ");
-    private JRadioButton case3 = new JRadioButton("Niveau 3     ");
+    private JRadioButton case1 = new JRadioButton("Niveau 1");
+    private JRadioButton case2 = new JRadioButton("Niveau 2");
+    private JRadioButton case3 = new JRadioButton("Niveau 3");
 
     // Pour le boutton
     private JButton valider = new JButton("Valider");
