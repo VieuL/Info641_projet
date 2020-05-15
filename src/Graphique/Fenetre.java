@@ -34,17 +34,16 @@ public class Fenetre extends JFrame {
 
         }
         //Menu des differents type d'alarme
-        JMenu menu3 = new JMenu("Type  Alarme");
 
-        JMenuItem TypeA = new JMenuItem(new GraphTypeA(this,"Type A",AtypeListener.events));
-        menu3.add(TypeA);
 
-        JMenuItem TypeB = new JMenuItem(new GraphTypeA(this,"Type B",BtypeListener.events));
-        menu3.add(TypeB);
+        new GraphTypeA("Type A",AtypeListener.events);
+
+
+        new GraphTypeA("Type B",BtypeListener.events);
 
         menuBar.add(menu1);
         menuBar.add(menu2);
-        menuBar.add(menu3);
+
         setJMenuBar(menuBar);
 
         //page  principale

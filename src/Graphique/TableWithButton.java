@@ -1,4 +1,6 @@
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -50,6 +52,7 @@ public class TableWithButton extends JPanel {
             setText((obj == null) ? "" : obj.toString());
             return this;
         }
+
     }
 
     private class ButtonEditor extends DefaultCellEditor {
@@ -65,7 +68,7 @@ public class TableWithButton extends JPanel {
 
 
             //WHEN BUTTON IS CLICKED
-            btn.addActionListener(e -> fireEditingStopped());
+            btn.addActionListener((ActionEvent e) -> fireEditingStopped());
         }
         @Override
         public Component getTableCellEditorComponent(JTable table, Object obj,
@@ -79,24 +82,24 @@ public class TableWithButton extends JPanel {
         }
         @Override
         public Object getCellEditorValue() {
-
             if (clicked) {
                 //numero de la ligne de la colonne choisit par l'utilisateur
-                int select = this.panel.getTable().getSelectedRow();
+                int select = table.getSelectedRow();
                 //dialogue informative  (renvoie 1 ou 0)
                 if (JOptionPane.showConfirmDialog(null, this.panel.getEvents().get(select).toString() + "\nEvenement terminé ?", "Detail",
                         JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                     //supprime evenement
                     this.panel.getEvents().remove(select);
-                    DefaultTableModel model = (DefaultTableModel) this.panel.getTable().getModel();
+                    DefaultTableModel model = (DefaultTableModel) table.getModel();
+                    System.out.println(select);
+                    System.out.println(table.getRowCount());
                     model.removeRow(select);//supprimer ligne de la table
-                    this.panel.getTable().repaint();//reaffichage
-
-
                 } //sinon on fait rien
             }
             clicked = false;
+
             return Text;
         }
     }
+
 }
