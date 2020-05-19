@@ -20,7 +20,6 @@ public class GraphTypeA extends JFrame {
     }
 
 
-
     public void initialisation() {
         int taille = events.size();
         if (taille != 0) {
@@ -42,5 +41,11 @@ public class GraphTypeA extends JFrame {
             this.setContentPane(pan);
 
         }
+    }
+
+    public void reinitialisation(){
+//        System.out.println("coucou");
+        this.initialisation();
+        this.setVisible(true);
     }
 }

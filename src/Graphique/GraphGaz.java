@@ -144,7 +144,16 @@ public class GraphGaz extends AbstractAction {
             CréationAlarme alarme = new CréationAlarme();
             alarme.getGazG().generateGazEvent(batim.get(fenetre.getBatAlarme()),fenetre.getNiveauAlarme(),textField.getText());
             new GraphGaz(fenetre,"gaz").rea();
-        }
+//            fenetre.setTa(new GraphTypeA("Type A",AtypeListener.events));
+
+            for (GraphTypeA i : Fenetre.gta){i.reinitialisation();}
+            for (GraphTypeA j : Fenetre.gtb){j.reinitialisation();}
+
+            }
+
+
+
+
     }
 
 

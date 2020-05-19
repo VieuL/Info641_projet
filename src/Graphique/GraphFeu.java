@@ -133,6 +133,9 @@ public class GraphFeu extends AbstractAction {
             CréationAlarme alarme = new CréationAlarme();
             alarme.getIncendieG().generateIncendieEvent(batim.get(fenetre.getBatAlarme()),fenetre.getNiveauAlarme());
             new GraphFeu(fenetre,"feu").rea();
+            for (GraphTypeA i : Fenetre.gta){i.reinitialisation();}
+//            for (GraphTypeA j : Fenetre.gtb){j.reinitialisation();}
+
 
         }
     }

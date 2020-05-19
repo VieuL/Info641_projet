@@ -10,6 +10,7 @@ public class CréationAlarme {
         gazG.addAtypeListener(listA);
         IncendieG.addAtypeListener(listA);
 
+
         gazG.addBtypeListener(listB);
         radiationG.addBtypeListener(listB);
     }

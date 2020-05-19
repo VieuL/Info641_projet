@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Fenetre extends JFrame {
     private String batAlarme;
@@ -7,6 +8,13 @@ public class Fenetre extends JFrame {
     private String typeG;
     private int radioV;
 
+    public static ArrayList<GraphTypeA> gta = new ArrayList<>();
+    public static ArrayList<GraphTypeA> gtb = new ArrayList<>();
+
+    private GraphTypeA ta;
+    private GraphTypeA tb;
+
+    private int a;
     public Fenetre(){
 
         this.setTitle("Application");
@@ -35,11 +43,17 @@ public class Fenetre extends JFrame {
         }
         //Menu des differents type d'alarme
 
+        for(Inscription i : Inscription.aType){
+            gta.add(new GraphTypeA("Type A",AtypeListener.events));}
+//            this.setTa(new GraphTypeA("Type A",AtypeListener.events));}
 
-        new GraphTypeA("Type A",AtypeListener.events);
+        for(Inscription u : Inscription.bType) {
+            gtb.add(new GraphTypeA("Type B",BtypeListener.events));
+        }
+//            this.tb = new GraphTypeA("Type B",BtypeListener.events);}
 
 
-        new GraphTypeA("Type B",BtypeListener.events);
+
 
         menuBar.add(menu1);
         menuBar.add(menu2);
@@ -90,4 +104,21 @@ public class Fenetre extends JFrame {
     public void setRadioV(int µ){
         this.radioV = µ;
     }
+
+    public GraphTypeA getTa() {
+        return ta;
+    }
+
+    public void setTa(GraphTypeA ta) {this.ta = ta; }
+
+    public int getA() {
+        return a;
+    }
+
+    public void setA(int a) { this.a = a;}
+
+    public GraphTypeA getTb(){return tb;}
+
+
+
 }
