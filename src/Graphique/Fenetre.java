@@ -43,12 +43,12 @@ public class Fenetre extends JFrame {
         }
         //Menu des differents type d'alarme
 
-        for(Inscription i : Inscription.aType){
-            gta.add(new GraphTypeA("Type A",AtypeListener.events));}
+        for(AtypeListener i : Inscription.aType){
+            gta.add(new GraphTypeA("Type A",i.events));}
 //            this.setTa(new GraphTypeA("Type A",AtypeListener.events));}
 
-        for(Inscription u : Inscription.bType) {
-            gtb.add(new GraphTypeA("Type B",BtypeListener.events));
+        for(BtypeListener u : Inscription.bType) {
+            gtb.add(new GraphTypeA("Type B",u.events));
         }
 //            this.tb = new GraphTypeA("Type B",BtypeListener.events);}
 

@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.EventObject;
 
 public class BtypeListener implements BtypeInterface{
-    public static ArrayList<EventAbstract> events= new ArrayList<>();//liste des evenements de typeB
+    public  ArrayList<EventAbstract> events= new ArrayList<>();//liste des evenements de typeB
 
 
 

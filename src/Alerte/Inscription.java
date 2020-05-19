@@ -3,31 +3,28 @@ import java.util.ArrayList;
 public class Inscription {
     private String type;
     private String nom;
-    public static ArrayList<Inscription> aType = new ArrayList<>();
-    public static ArrayList<Inscription> bType = new ArrayList<>();
+    public static ArrayList<BtypeListener> bType = new ArrayList<>();
 
+    public static ArrayList<AtypeListener> aType = new ArrayList<>();
     public Inscription(){}
 
     public void isBtype(){
 
         this.type = "B";
-        bType.add(this);
+        BtypeListener listA = new BtypeListener();
+        CréationAlarme.gazG.addBtypeListener(listA);
+        CréationAlarme.radiationG.addBtypeListener(listA);
+        bType.add(listA);
     }
 
     public void isAtype(){
         this.type = "A";
-        aType.add(this);
+        AtypeListener listA = new AtypeListener();
+        CréationAlarme.gazG.addAtypeListener(listA);
+        CréationAlarme.IncendieG.addAtypeListener(listA);
+        aType.add(listA);
     }
 
-    public void desinscription(){
-        if(this.type == "A"){
-            aType.remove(this);
-        }
-
-        if(this.type == "B"){
-            bType.remove(this);
-        }
-    }
 
     public String getNom() {
         return nom;

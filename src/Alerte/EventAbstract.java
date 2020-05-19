@@ -16,12 +16,17 @@ abstract class EventAbstract extends EventObject {
             throw new ExceptionInInitializerError();
         }
     }
+
+    /**
+     * Cette fonction permet de faire une display de l'objet
+     */
     public  String toString(){
         return "événement produit à : "+ this.getDate().getTime()
                 +"\nsitué dans le  "+this.getLocation().getNom()
                 +" et de niveau "+ this.getLevel();
     }
 
+    //! ---- Définition des accesseurs (getter/setter) ----
     public Batiment getLocation() {
         return location;
     }

@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.EventObject;
 
 public class AtypeListener implements AtypeInterface {
-    public static ArrayList <EventAbstract> events= new ArrayList<>();
+    public  ArrayList <EventAbstract> events= new ArrayList<>();
 
     @Override
     public void Atype(EventObject eo) {
