@@ -37,6 +37,22 @@ public class GraphFeu extends AbstractAction {
     }
 
     public void rea() {
+        µ = 0;
+        titre = new JPanel();
+        bat = new JPanel();
+        grpRadio = new JPanel();
+        bou = new JPanel();
+        batim = new HashMap<>();
+        choix = new JComboBox();
+        bgRadio = new ButtonGroup();
+        case1 = new JRadioButton("Niveau 1");
+        case2 = new JRadioButton("Niveau 2");
+        case3 = new JRadioButton("Niveau 3");
+        valider = new JButton("Valider");
+
+
+
+
         fenetre.remove(titre);
         fenetre.setTitle("Incendie");
         fenetre.setLocationRelativeTo(null);
@@ -128,12 +144,10 @@ public class GraphFeu extends AbstractAction {
 
     class ButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            CréationAlarme alarme = new CréationAlarme();
-            alarme.getIncendieG().generateIncendieEvent(batim.get(fenetre.getBatAlarme()),fenetre.getNiveauAlarme());
-            new GraphFeu(fenetre,"feu").rea();
-            for (FenetreType i : Fenetre.gta){i.reinitialisation();}
-//            for (GraphTypeA j : Fenetre.gtb){j.reinitialisation();}
 
+            CréationAlarme.IncendieG.generateIncendieEvent(batim.get(fenetre.getBatAlarme()),fenetre.getNiveauAlarme());
+            for (FenetreType i : Fenetre.gta){i.reinitialisation();}
+            new GraphFeu(fenetre,"feu").rea();
 
         }
     }

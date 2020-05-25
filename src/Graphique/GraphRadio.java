@@ -45,6 +45,20 @@ public class GraphRadio extends AbstractAction {
     }
 
     public void rea() {
+        µ = 0;
+        this.titre = new JPanel();
+        this.bat = new JPanel();
+        this.grpRadio = new JPanel();
+        this.bou = new JPanel();
+        this.batim = new HashMap<>();
+        this.choix = new JComboBox();
+        this.case1 = new JRadioButton("Niveau 1");
+        this.case2 = new JRadioButton("Niveau 2");
+        this.case3 = new JRadioButton("Niveau 3");
+        this.progressBar = new JProgressBar(0, 100);
+        this.pourcentage = new JLabel("0");
+        this.valider = new JButton("Valider");
+
         fenetre.remove(titre);
         fenetre.setTitle("Radioactivité");
         fenetre.setLocationRelativeTo(null);
@@ -170,10 +184,10 @@ public class GraphRadio extends AbstractAction {
 
     class ButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            CréationAlarme alarme = new CréationAlarme();
-            alarme.getRadiationG().generateRadiationEvent(batim.get(fenetre.getBatAlarme()),fenetre.getNiveauAlarme(),fenetre.getRadioV());
-            new GraphRadio(fenetre,"radio").rea();
+            CréationAlarme.radiationG.generateRadiationEvent(batim.get(fenetre.getBatAlarme()),fenetre.getNiveauAlarme(),fenetre.getRadioV());
             for (FenetreType j : Fenetre.gtb){j.reinitialisation();}
+            new GraphRadio(fenetre,"radio").rea();
+
         }
     }
 

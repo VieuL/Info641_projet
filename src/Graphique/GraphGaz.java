@@ -37,6 +37,21 @@ public class GraphGaz extends AbstractAction {
     }
 
     public void rea() {
+        µ = 0;
+        this.titre = new JPanel();
+        this.bat = new JPanel();
+        this.grpRadio = new JPanel();
+        this.bou = new JPanel();
+        this.txt = new JPanel();
+        this.batim = new HashMap<>();
+        this.choix = new JComboBox();
+        this.case1 = new JRadioButton("Niveau 1");
+        this.case2 = new JRadioButton("Niveau 2");
+        this.case3 = new JRadioButton("Niveau 3");
+        this.valider = new JButton("Valider");
+
+
+
         fenetre.remove(titre);
         fenetre.setTitle("Gaz");
         fenetre.setLocationRelativeTo(null);
@@ -141,15 +156,15 @@ public class GraphGaz extends AbstractAction {
     class ButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             System.out.println(textField.getText());
-            CréationAlarme alarme = new CréationAlarme();
-            alarme.getGazG().generateGazEvent(batim.get(fenetre.getBatAlarme()),fenetre.getNiveauAlarme(),textField.getText());
-            new GraphGaz(fenetre,"gaz").rea();
+            CréationAlarme.gazG.generateGazEvent(batim.get(fenetre.getBatAlarme()),fenetre.getNiveauAlarme(),textField.getText());
 //            fenetre.setTa(new GraphTypeA("Type A",AtypeListener.events));
 
             for (FenetreType i : Fenetre.gta){i.reinitialisation();}
             for (FenetreType j : Fenetre.gtb){j.reinitialisation();}
+            new GraphGaz(fenetre,"gaz").rea();
 
             }
+
 
 
 
