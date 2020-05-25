@@ -70,23 +70,31 @@ public class Fenetre extends JFrame {
         this.setVisible(true);
     }
     public static void updatingWithRemove(EventAbstract e){
-        for (FenetreType i : Fenetre.gta){
-            i.getEvents().remove(e);
-            i.reinitialisation();
+        //suppression de l'evenement pour le type A
+        for (FenetreType typeA : Fenetre.gta){
+            typeA.getEvents().remove(e);
+            typeA.reinitialisation();
         }
-        for (FenetreType j : Fenetre.gtb){
-            j.getEvents().remove(e);
-            j.reinitialisation();
+        //suppression de l'evenement  pour le type B
+        for (FenetreType typeB : Fenetre.gtb){
+            typeB.getEvents().remove(e);
+            typeB.reinitialisation();
+        }
+        //suppression de l'evenement pour les batiments
+        for(Batiment bat :Batiment.liste){
+            if(bat.getEvents().contains(e)){
+                bat.getEvents().remove(e);
+            }
         }
     }
     public static void updatingWithAdd(EventAbstract e){
-        for (FenetreType i : Fenetre.gta){
-            i.getEvents().add(e);
-            i.reinitialisation();
+        for (FenetreType typeA : Fenetre.gta){
+            typeA.getEvents().add(e);
+            typeA.reinitialisation();
         }
-        for (FenetreType j : Fenetre.gtb){
-            j.getEvents().add(e);
-            j.reinitialisation();
+        for (FenetreType typeB : Fenetre.gtb){
+            typeB.getEvents().add(e);
+            typeB.reinitialisation();
         }
     }
 

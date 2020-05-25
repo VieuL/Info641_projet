@@ -31,19 +31,27 @@ public class GraphBatiment extends AbstractAction implements ActionListener {
      *methode permettant de creer le tableau sur la fenetre
      */
     public void initialisation() {
-
-        this.fenetre.setTitle(batiment.getNom());
         int taille = batiment.getEvents().size();
-        Object data[][] = new Object[taille][5];
-        for (int i = 0; i < taille; i++) {
-            data[i][0] = String.valueOf(i + 1);
-            data[i][1] = batiment.getEvents().get(i).getType();
-            data[i][2] = String.valueOf(batiment.getEvents().get(i).getLevel());
-            data[i][3] = String.valueOf(batiment.getEvents().get(i).getDate().getTime());
-            data[i][4] = "Detail";
+        if (taille != 0) {
+            this.fenetre.setTitle(batiment.getNom());
+            Object data[][] = new Object[taille][5];
+            for (int i = 0; i < taille; i++) {
+                data[i][0] = String.valueOf(i + 1);
+                data[i][1] = batiment.getEvents().get(i).getType();
+                data[i][2] = String.valueOf(batiment.getEvents().get(i).getLevel());
+                data[i][3] = String.valueOf(batiment.getEvents().get(i).getDate().getTime());
+                data[i][4] = "Detail";
+            }
+            String[] title = {"Position", "Type", "Level", "Date", "Detail"};
+            fenetre.setContentPane(new TableWithButton(data, title, batiment.getEvents()));
+            fenetre.setVisible(true);
+        } else {
+            //affichage lorsque qu'il y a pas d'evenement
+            JPanel pan = new JPanel();
+            pan.add(new JLabel("Il n'y a pas d'alarme non traité"));
+            fenetre.setContentPane(pan);
+            fenetre.setVisible(true);
         }
-        String[] title = {"Position", "Type", "Level", "Date", "Detail"};
-        fenetre.setContentPane(new TableWithButton(data, title, batiment.getEvents()));
-        fenetre.setVisible(true);
+
     }
 }
