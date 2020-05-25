@@ -1,5 +1,7 @@
 import java.util.ArrayList;
-
+/**
+ * generation des alertes de type incendie
+ */
 
 public class IncendieGenerator {
     ArrayList<AtypeInterface> myListeners2 = new ArrayList<AtypeInterface>();

@@ -1,5 +1,7 @@
 import java.util.ArrayList;
-
+/**
+ * generation des alertes de type radiation
+ */
 public class RadiationGenerator {
     ArrayList<BtypeInterface> myListeners3 = new ArrayList<BtypeInterface>();
 

@@ -8,11 +8,8 @@ public class Fenetre extends JFrame {
     private String typeG;
     private int radioV;
 
-    public static ArrayList<GraphTypeA> gta = new ArrayList<>();
-    public static ArrayList<GraphTypeA> gtb = new ArrayList<>();
-
-    private GraphTypeA ta;
-    private GraphTypeA tb;
+    public static ArrayList<FenetreType> gta = new ArrayList<>();
+    public static ArrayList<FenetreType> gtb = new ArrayList<>();
 
     private int a;
     public Fenetre(){
@@ -44,11 +41,11 @@ public class Fenetre extends JFrame {
         //Menu des differents type d'alarme
 
         for(AtypeListener i : Inscription.aType){
-            gta.add(new GraphTypeA("Type A",i.events));}
+            gta.add(new FenetreType("Type A",i.events));}
 //            this.setTa(new GraphTypeA("Type A",AtypeListener.events));}
 
         for(BtypeListener u : Inscription.bType) {
-            gtb.add(new GraphTypeA("Type B",u.events));
+            gtb.add(new FenetreType("Type B",u.events));
         }
 //            this.tb = new GraphTypeA("Type B",BtypeListener.events);}
 
@@ -72,6 +69,27 @@ public class Fenetre extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
+    public static void updatingWithRemove(EventAbstract e){
+        for (FenetreType i : Fenetre.gta){
+            i.getEvents().remove(e);
+            i.reinitialisation();
+        }
+        for (FenetreType j : Fenetre.gtb){
+            j.getEvents().remove(e);
+            j.reinitialisation();
+        }
+    }
+    public static void updatingWithAdd(EventAbstract e){
+        for (FenetreType i : Fenetre.gta){
+            i.getEvents().add(e);
+            i.reinitialisation();
+        }
+        for (FenetreType j : Fenetre.gtb){
+            j.getEvents().add(e);
+            j.reinitialisation();
+        }
+    }
+
 
     public void setbatAlarmee(String form){
         this.batAlarme = form;
@@ -89,14 +107,6 @@ public class Fenetre extends JFrame {
         return niveauAlarme;
     }
 
-    public String getTypeG() {
-        return typeG;
-    }
-
-    public void setTypeG(String typeG) {
-        this.typeG = typeG;
-    }
-
     public int getRadioV() {
         return radioV;
     }
@@ -105,19 +115,13 @@ public class Fenetre extends JFrame {
         this.radioV = µ;
     }
 
-    public GraphTypeA getTa() {
-        return ta;
-    }
-
-    public void setTa(GraphTypeA ta) {this.ta = ta; }
-
     public int getA() {
         return a;
     }
 
     public void setA(int a) { this.a = a;}
 
-    public GraphTypeA getTb(){return tb;}
+
 
 
 

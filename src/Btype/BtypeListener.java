@@ -1,12 +1,15 @@
 import java.util.ArrayList;
 import java.util.EventObject;
-
+/**
+ * classe d'écouteur de type B soit gaz et radiation
+ */
 public class BtypeListener implements BtypeInterface{
     public  ArrayList<EventAbstract> events= new ArrayList<>();//liste des evenements de typeB
-
-
-
-
+    /**
+     *
+     * @param eo
+     * evenement entrant de Type B
+     */
     @Override
     public void Btype(EventObject eo) {
         if(eo instanceof GazEvent){

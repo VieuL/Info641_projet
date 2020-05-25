@@ -146,8 +146,8 @@ public class GraphGaz extends AbstractAction {
             new GraphGaz(fenetre,"gaz").rea();
 //            fenetre.setTa(new GraphTypeA("Type A",AtypeListener.events));
 
-            for (GraphTypeA i : Fenetre.gta){i.reinitialisation();}
-            for (GraphTypeA j : Fenetre.gtb){j.reinitialisation();}
+            for (FenetreType i : Fenetre.gta){i.reinitialisation();}
+            for (FenetreType j : Fenetre.gtb){j.reinitialisation();}
 
             }
 

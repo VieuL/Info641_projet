@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 
+/**
+ *
+ */
 public class Batiment {
 
     private String nom;
@@ -8,7 +11,13 @@ public class Batiment {
     private  ArrayList<EventAbstract> events;
     private ArrayList<Salle> salle;
 
-
+    /**
+     *
+     * @param nom
+     * nom du batiment
+     * @param taille
+     *
+     */
     public Batiment(String nom, int taille){
         this.nom = nom;
         this.taille = taille;
@@ -42,7 +51,7 @@ public class Batiment {
 
     public void addSalle(Salle µ){this.salle.add(µ);}
 
-    public static  void removeAllBatiment(EventAbstract e){
+    public static void removeAllBatiment(EventAbstract e){
             for( Batiment batiment:liste){
                 if(batiment.getEvents().contains(e)){
                     batiment.getEvents().remove(e);

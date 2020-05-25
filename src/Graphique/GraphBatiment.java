@@ -2,10 +2,20 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ *
+ */
 public class GraphBatiment extends AbstractAction implements ActionListener {
     private Fenetre fenetre;
     private Batiment batiment;
 
+    /**
+     *
+     * @param fenetre
+     * @param texte
+     * titre de la fenetre
+     * @param batiment
+     */
     public GraphBatiment(Fenetre fenetre, String texte, Batiment batiment) {
         super(texte);
         this.batiment = batiment;
@@ -17,6 +27,9 @@ public class GraphBatiment extends AbstractAction implements ActionListener {
         this.initialisation();
     }
 
+    /**
+     *methode permettant de creer le tableau sur la fenetre
+     */
     public void initialisation() {
 
         this.fenetre.setTitle(batiment.getNom());

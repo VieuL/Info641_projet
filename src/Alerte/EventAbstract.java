@@ -1,11 +1,23 @@
 import java.util.EventObject;
 import java.util.GregorianCalendar;
 
+/**
+ * classe abstrait pour la gestion des differents evenements
+ */
 abstract class EventAbstract extends EventObject {
     private GregorianCalendar date;
     private Batiment location;
     private int level;
 
+    /**
+     *
+     * @param source
+     * source de l'alerte
+     * @param location
+     * batiment provoquant l'alerte
+     * @param level
+     * niveau d'importance de l'alerte
+     */
     public EventAbstract(Object source,Batiment location,int level) {
         super(source);
         this.date = new GregorianCalendar();
@@ -18,7 +30,7 @@ abstract class EventAbstract extends EventObject {
     }
 
     /**
-     * Cette fonction permet de faire une display de l'objet
+     * Cette fonction permet de faire un affichage de l'objet
      */
     public  String toString(){
         return "événement produit à : "+ this.getDate().getTime()

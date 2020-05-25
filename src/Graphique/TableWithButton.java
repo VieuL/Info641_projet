@@ -1,6 +1,5 @@
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -16,6 +15,15 @@ public class TableWithButton extends JPanel {
     private JTable table;
     ArrayList<EventAbstract> events;
 
+    /**
+     *
+     * @param data
+     * contient les lignes du tableau
+     * @param title
+     * Contient les noms des colones
+     * @param events
+     * liste des evenements à gerer
+     */
     public TableWithButton(Object[][] data, String[] title, ArrayList<EventAbstract> events) {
         this.events = events;
         //Creation Jtable
@@ -23,7 +31,7 @@ public class TableWithButton extends JPanel {
 
         //ajout bouton a la derniere colone
         table.getColumnModel().getColumn(title.length - 1).setCellRenderer(new ButtonRenderer());
-        table.getColumnModel().getColumn(title.length - 1).setCellEditor(new ButtonEditor(new JTextField(), this));
+        table.getColumnModel().getColumn(title.length - 1).setCellEditor(new ButtonEditor(new JTextField(), this.getEvents()));
         //ajout du scroll
         JScrollPane pane = new JScrollPane(table);
         this.add(pane);
@@ -37,7 +45,6 @@ public class TableWithButton extends JPanel {
     public ArrayList<EventAbstract> getEvents() {
         return events;
     }
-
     private class ButtonRenderer extends JButton implements TableCellRenderer {
 
         public ButtonRenderer() {
@@ -55,26 +62,34 @@ public class TableWithButton extends JPanel {
 
     }
 
+
     private class ButtonEditor extends DefaultCellEditor {
         protected JButton btn;
         private String Text;
         private Boolean clicked;
-        private TableWithButton panel;
+        private ArrayList<EventAbstract> events;
 
-        public ButtonEditor(JTextField txt, TableWithButton panel) {
+        /**
+         *
+         * @param txt
+         * contient le texte du  bouton
+         * @param events
+         * liste des evenements
+         */
+
+        public ButtonEditor(JTextField txt, ArrayList<EventAbstract> events) {
             super(txt);
-            this.panel = panel;
+            this.events =events;
             btn = new JButton();
 
-
-            //WHEN BUTTON IS CLICKED
+            //quand le bouton est cliqué
             btn.addActionListener((ActionEvent e) -> fireEditingStopped());
         }
         @Override
         public Component getTableCellEditorComponent(JTable table, Object obj,
                                                      boolean selected, int row, int col) {
 
-            //SET TEXT TO BUTTON,SET CLICKED TO TRUE,THEN RETURN THE BTN OBJECT
+            //ajout le texte sur le bouton
             Text = (obj == null) ? "" : obj.toString();
             btn.setText(Text);
             clicked = true;
@@ -85,15 +100,12 @@ public class TableWithButton extends JPanel {
             if (clicked) {
                 //numero de la ligne de la colonne choisit par l'utilisateur
                 int select = table.getSelectedRow();
-                //dialogue informative  (renvoie 1 ou 0)
-                if (JOptionPane.showConfirmDialog(null, this.panel.getEvents().get(select).toString() + "\nEvenement terminé ?", "Detail",
+                //dialogue informative  (renvoie 1 ou 0 selon la réponse de l'utilisateur)
+                if (JOptionPane.showConfirmDialog(null, this.events.get(select).toString() + "\nEvenement terminé ?", "Detail",
                         JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                     //supprime evenement
-                    this.panel.getEvents().remove(select);
-                    DefaultTableModel model = (DefaultTableModel) table.getModel();
-                    System.out.println(select);
-                    System.out.println(table.getRowCount());
-                    model.removeRow(select);//supprimer ligne de la table
+                    Fenetre.updatingWithRemove(this.events.get(select));
+
                 } //sinon on fait rien
             }
             clicked = false;

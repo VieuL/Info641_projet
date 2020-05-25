@@ -1,9 +1,17 @@
 import java.util.ArrayList;
 import java.util.EventObject;
 
+/**
+ * classe d'écouteur de type A soit gaz et incendie
+ */
 public class AtypeListener implements AtypeInterface {
     public  ArrayList <EventAbstract> events= new ArrayList<>();
 
+    /**
+     *
+     * @param eo
+     * evenement entrant de Type A
+     */
     @Override
     public void Atype(EventObject eo) {
         if(eo instanceof GazEvent){

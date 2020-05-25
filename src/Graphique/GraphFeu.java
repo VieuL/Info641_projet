@@ -2,8 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.util.HashMap;
 /*
 pane.setLayout(new GridBagLayout());
@@ -133,7 +131,7 @@ public class GraphFeu extends AbstractAction {
             CréationAlarme alarme = new CréationAlarme();
             alarme.getIncendieG().generateIncendieEvent(batim.get(fenetre.getBatAlarme()),fenetre.getNiveauAlarme());
             new GraphFeu(fenetre,"feu").rea();
-            for (GraphTypeA i : Fenetre.gta){i.reinitialisation();}
+            for (FenetreType i : Fenetre.gta){i.reinitialisation();}
 //            for (GraphTypeA j : Fenetre.gtb){j.reinitialisation();}
 
 

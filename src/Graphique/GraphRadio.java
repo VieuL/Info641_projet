@@ -173,7 +173,7 @@ public class GraphRadio extends AbstractAction {
             CréationAlarme alarme = new CréationAlarme();
             alarme.getRadiationG().generateRadiationEvent(batim.get(fenetre.getBatAlarme()),fenetre.getNiveauAlarme(),fenetre.getRadioV());
             new GraphRadio(fenetre,"radio").rea();
-            for (GraphTypeA j : Fenetre.gtb){j.reinitialisation();}
+            for (FenetreType j : Fenetre.gtb){j.reinitialisation();}
         }
     }
 

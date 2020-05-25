@@ -1,5 +1,7 @@
 import java.util.ArrayList;
-
+/**
+ * generation des alertes de type gaz
+ */
 public class GazGenerator {
 
     ArrayList<AtypeInterface> myListeners2 = new ArrayList<AtypeInterface>();
