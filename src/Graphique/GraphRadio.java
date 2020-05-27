@@ -60,7 +60,7 @@ public class GraphRadio extends AbstractAction {
         this.valider = new JButton("Valider");
 
         fenetre.remove(titre);
-        fenetre.setTitle("Radioactivité");
+        fenetre.setTitle("Administration");
         fenetre.setLocationRelativeTo(null);
 
         bat.setLayout(new BoxLayout(bat, BoxLayout.Y_AXIS));

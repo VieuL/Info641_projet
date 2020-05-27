@@ -53,7 +53,7 @@ public class GraphGaz extends AbstractAction {
 
 
         fenetre.remove(titre);
-        fenetre.setTitle("Gaz");
+        fenetre.setTitle("Administration");
         fenetre.setLocationRelativeTo(null);
 
         bat.setMaximumSize(new Dimension(400, 200));
