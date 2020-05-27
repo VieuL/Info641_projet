@@ -14,7 +14,7 @@ public class Fenetre extends JFrame {
     private int a;
     public Fenetre(){
 
-        this.setTitle("Application");
+        this.setTitle("Administration");
         this.setSize(getToolkit().getScreenSize());
 
         //Menu des alarmes
