@@ -2,6 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * classe principale de l'application lancant les differentes fenetres
+ */
 public class Fenetre extends JFrame {
     private String batAlarme;
     private int niveauAlarme;
@@ -49,9 +52,6 @@ public class Fenetre extends JFrame {
         }
 //            this.tb = new GraphTypeA("Type B",BtypeListener.events);}
 
-
-
-
         menuBar.add(menu1);
         menuBar.add(menu2);
 
@@ -69,6 +69,12 @@ public class Fenetre extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
+
+    /**
+     * Actualisation des listes d'evenements des differents ecouteurs
+     * @param e
+     * evenement à supprimer
+     */
     public static void updatingWithRemove(EventAbstract e){
         //suppression de l'evenement pour le type A
         for (FenetreType typeA : Fenetre.gta){
@@ -81,12 +87,18 @@ public class Fenetre extends JFrame {
             typeB.reinitialisation();
         }
         //suppression de l'evenement pour les batiments
-        for(Batiment bat :Batiment.liste){
-            if(bat.getEvents().contains(e)){
-                bat.getEvents().remove(e);
-            }
+        for(GraphBatiment GraphBat : GraphBatiment.ListeBatiments){
+            GraphBat.getBatiment().getEvents().remove(e);
+            GraphBat.initialisation();
         }
     }
+
+
+    /**
+     * Actualisation des listes d'evenements des differents ecouteurs
+     * @param e
+     * evenement à ajouter
+     */
     public static void updatingWithAdd(EventAbstract e){
         for (FenetreType typeA : Fenetre.gta){
             typeA.getEvents().add(e);
@@ -96,9 +108,15 @@ public class Fenetre extends JFrame {
             typeB.getEvents().add(e);
             typeB.reinitialisation();
         }
+        for(GraphBatiment GraphBat : GraphBatiment.ListeBatiments){
+            if(e.getLocation().equals(GraphBat.getBatiment())) {
+                GraphBat.getBatiment().getEvents().add(e);
+                GraphBat.initialisation();
+            }
+        }
     }
 
-
+    //! ---- Définition des accesseurs (getter/setter) ----
     public void setbatAlarmee(String form){
         this.batAlarme = form;
     }
@@ -128,8 +146,6 @@ public class Fenetre extends JFrame {
     }
 
     public void setA(int a) { this.a = a;}
-
-
 
 
 

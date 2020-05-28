@@ -4,8 +4,8 @@ import java.util.ArrayList;
  */
 public class GazGenerator {
 
-    ArrayList<AtypeInterface> myListeners2 = new ArrayList<AtypeInterface>();
-    ArrayList<BtypeInterface> myListeners3 = new ArrayList<BtypeInterface>();
+    ArrayList<AtypeInterface> myListeners2 = new ArrayList<>();
+    ArrayList<BtypeInterface> myListeners3 = new ArrayList<>();
 
 
     public void addAtypeListener(AtypeInterface gl){
@@ -14,7 +14,15 @@ public class GazGenerator {
     public void addBtypeListener(BtypeInterface gl){
         this.myListeners3.add(gl);
     }
-
+    /**
+     * methode qui ajoute l'evenement a chaques ecouteurs
+     * @param location
+     * batiment de provenance de l'alerte
+     * @param level
+     * niveau de l'alerte
+     * @param typeGaz
+     * type de gaz associe a l'alerte
+     */
     public void generateGazEvent(Batiment location,int level,String typeGaz){
         GazEvent event = new GazEvent(this,location,level,typeGaz);
 

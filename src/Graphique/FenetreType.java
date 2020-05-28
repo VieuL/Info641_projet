@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class FenetreType extends JFrame {
 
-    private String texte;
+
     private ArrayList<EventAbstract> events;
 
     /**
@@ -20,7 +20,6 @@ public class FenetreType extends JFrame {
     public FenetreType(String texte, ArrayList<EventAbstract> events) {
         super(texte);
         this.events = events;
-        this.texte=texte;
         this.initialisation();
         this.setSize(getToolkit().getScreenSize());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,7 +62,7 @@ public class FenetreType extends JFrame {
         this.initialisation();
         this.setVisible(true);
     }
-
+    //! ---- Définition des accesseurs (getter/setter) ----
     public ArrayList<EventAbstract> getEvents() {
         return events;
     }
