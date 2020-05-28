@@ -49,12 +49,12 @@ public class GraphGaz extends AbstractAction {
         this.case2 = new JRadioButton("Niveau 2");
         this.case3 = new JRadioButton("Niveau 3");
         this.valider = new JButton("Valider");
-
+        this.textField = new JTextField();
 
 
         fenetre.remove(titre);
         fenetre.setTitle("Administration");
-        fenetre.setLocationRelativeTo(null);
+        //fenetre.setLocationRelativeTo(null);
 
         bat.setMaximumSize(new Dimension(400, 200));
         bat.setLayout(new BoxLayout(bat, BoxLayout.Y_AXIS));
