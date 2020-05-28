@@ -1,13 +1,15 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 /**
- *
+ * classe qui permet de visualiser les evenements lie a un batiment dans la fenetre administration
  */
 public class GraphBatiment extends AbstractAction implements ActionListener {
     private Fenetre fenetre;
     private Batiment batiment;
+    public static ArrayList<GraphBatiment> ListeBatiments = new ArrayList<>();
 
     /**
      *
@@ -18,6 +20,7 @@ public class GraphBatiment extends AbstractAction implements ActionListener {
      */
     public GraphBatiment(Fenetre fenetre, String texte, Batiment batiment) {
         super(texte);
+        ListeBatiments.add(this);
         this.batiment = batiment;
         this.fenetre = fenetre;
     }
@@ -34,7 +37,7 @@ public class GraphBatiment extends AbstractAction implements ActionListener {
         int taille = batiment.getEvents().size();
         if (taille != 0) {
             this.fenetre.setTitle(batiment.getNom());
-            Object data[][] = new Object[taille][5];
+            Object[][] data = new Object[taille][5];
             for (int i = 0; i < taille; i++) {
                 data[i][0] = String.valueOf(i + 1);
                 data[i][1] = batiment.getEvents().get(i).getType();
@@ -44,14 +47,18 @@ public class GraphBatiment extends AbstractAction implements ActionListener {
             }
             String[] title = {"Position", "Type", "Level", "Date", "Detail"};
             fenetre.setContentPane(new TableWithButton(data, title, batiment.getEvents()));
-            fenetre.setVisible(true);
         } else {
             //affichage lorsque qu'il y a pas d'evenement
             JPanel pan = new JPanel();
             pan.add(new JLabel("Il n'y a pas d'alarme non traité"));
             fenetre.setContentPane(pan);
-            fenetre.setVisible(true);
         }
+        fenetre.setVisible(true);
 
     }
+    //! ---- Définition des accesseurs (getter/setter) ----
+    public Batiment getBatiment() {
+        return batiment;
+    }
+
 }
