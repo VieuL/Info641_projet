@@ -25,7 +25,8 @@ public class GraphRadio extends AbstractAction {
     private JPanel grpRadio = new JPanel();
     private JPanel bou = new JPanel();
     private JPanel sli = new JPanel();
-
+    private JPanel groupSlide = new JPanel();
+    private JPanel groupProgressBar = new JPanel();
     // Pour les radio
     private ButtonGroup bgRadio = new ButtonGroup();
     private JRadioButton case1 = new JRadioButton("Niveau 1");
@@ -48,6 +49,12 @@ public class GraphRadio extends AbstractAction {
         this.fenetre = fenetre;
     }
 
+
+
+
+    /**
+     * Construction des panel et incorporation dans une fenetre
+     */
     public void rea() {
         µ = 0;
         this.titre = new JPanel();
@@ -59,13 +66,12 @@ public class GraphRadio extends AbstractAction {
         this.case1 = new JRadioButton("Niveau 1");
         this.case2 = new JRadioButton("Niveau 2");
         this.case3 = new JRadioButton("Niveau 3");
-        this.progressBar = new JProgressBar(0, 100);
-        this.pourcentage = new JLabel("0");
-        this.valider = new JButton("Valider");
 
+        this.valider = new JButton("Valider");
         fenetre.remove(titre);
         fenetre.setTitle("Administration");
-        //fenetre.setLocationRelativeTo(null);
+
+
 
         bat.setLayout(new BoxLayout(bat, BoxLayout.Y_AXIS));
 
@@ -113,7 +119,6 @@ public class GraphRadio extends AbstractAction {
             }
         });
 
-        JPanel groupSlide = new JPanel();
         groupSlide.add(labelSlide);
         groupSlide.add(slide);
         groupSlide.setMaximumSize(new Dimension(300, 20));
@@ -124,7 +129,7 @@ public class GraphRadio extends AbstractAction {
         pourcentage.setHorizontalTextPosition(JLabel.RIGHT);
 
         progressBar.setPreferredSize(new Dimension(210, 20));
-        JPanel groupProgressBar = new JPanel();
+
         groupProgressBar.add(progressBar);
         groupProgressBar.add(pourcentage);
 
@@ -133,9 +138,6 @@ public class GraphRadio extends AbstractAction {
         sli.add(groupSlide);
         sli.add(groupProgressBar);
 
-        // ------------------------------------------------------------
-//        titre.setPreferredSize(new Dimension(1000, 1000));
-//        titre.setLayout(new BoxLayout(titre, BoxLayout.Y_AXIS));
         titre.setBorder(BorderFactory.createTitledBorder(" Pour créer une alarme pour le radioactivité veuillez remplir le formulaire suivant "));
         sli.setBorder(BorderFactory.createTitledBorder(" niveau de radiation "));
         grpRadio.setBorder(BorderFactory.createTitledBorder(" Importance  "));
@@ -146,14 +148,10 @@ public class GraphRadio extends AbstractAction {
         titre.add(sli);
         titre.add(bou);
 
-
-
         fenetre.setContentPane(titre);
         fenetre.setVisible(true);
 
-
     }
-
     private void choixBat() {
         choix.setPreferredSize(new Dimension(100, 20));
         choix.addItem("choix du bâtiment");
@@ -163,13 +161,18 @@ public class GraphRadio extends AbstractAction {
         }
     }
 
+
+
+
     @Override
     public void actionPerformed(ActionEvent e) {
         this.rea();
     }
 
 
-    // Création d'une classe interne
+
+
+    // Création d'une classe interne actionListener pour le choix des batiment
     class ItemAction implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             fenetre.setbatAlarmee(choix.getSelectedItem().toString());
@@ -178,6 +181,9 @@ public class GraphRadio extends AbstractAction {
     }
 
 
+
+
+    // Création d'une classe interne actionListener pour le niveau
     class RadioListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             fenetre.setNiveauAlarme(Integer.parseInt(Character.toString(e.getActionCommand().charAt(e.getActionCommand().length() - 1))));
@@ -186,14 +192,22 @@ public class GraphRadio extends AbstractAction {
     }
 
 
+
+    // Création d'une classe interne actionListener pour le boutton
     class ButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            //Génération de l'alarme
             CréationAlarme.radiationG.generateRadiationEvent(batim.get(fenetre.getBatAlarme()),fenetre.getNiveauAlarme(),fenetre.getRadioV());
+            // Mise a jour des fenetes
             for (FenetreType j : Fenetre.gtb){j.reinitialisation();}
+            //Initialisation de la fenetre
             new GraphRadio(fenetre,"radio").rea();
 
         }
     }
+
+
+
 
     class ProgressListener implements ActionListener{
 

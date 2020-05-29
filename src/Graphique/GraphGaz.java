@@ -39,7 +39,15 @@ public class GraphGaz extends AbstractAction {
         this.fenetre = fenetre;
     }
 
+
+
+
+    /**
+     * Construction des panel et incorporation dans une fenetre
+     */
     public void rea() {
+        // Initialisation
+
         µ = 0;
         this.titre = new JPanel();
         this.bat = new JPanel();
@@ -53,7 +61,6 @@ public class GraphGaz extends AbstractAction {
         this.case3 = new JRadioButton("Niveau 3");
         this.valider = new JButton("Valider");
         this.textField = new JTextField();
-
 
         fenetre.remove(titre);
         fenetre.setTitle("Administration");
@@ -101,29 +108,24 @@ public class GraphGaz extends AbstractAction {
         txt.add(textField);
 
 
-
-
-        // ------------------------------------------------------------
-//            titre.setPreferredSize(new Dimension(1000, 1000));
-//        titre.setLayout(new BoxLayout(titre, BoxLayout.Y_AXIS));
         titre.setBorder(BorderFactory.createTitledBorder(" Pour créer une alarme pour le gaz veuillez remplir le formulaire suivant "));
         txt.setBorder(BorderFactory.createTitledBorder(" Nom du gaz "));
         grpRadio.setBorder(BorderFactory.createTitledBorder("importance  "));
         bat.setBorder(BorderFactory.createTitledBorder("localisation "));
+
         titre.add(bat);
         titre.add(grpRadio);
         titre.add(txt);
         titre.add(bou);
 
-
-
         fenetre.setContentPane(titre);
         fenetre.setVisible(true);
 
-
-
     }
 
+
+
+    // creation de la combo - Box
     private void choixBat() {
         choix.setPreferredSize(new Dimension(100, 20));
         choix.addItem("choix du bâtiment");
@@ -133,10 +135,14 @@ public class GraphGaz extends AbstractAction {
         }
     }
 
+
+
     @Override
     public void actionPerformed(ActionEvent e) {
         this.rea();
     }
+
+
 
 
     // Création d'une classe interne
@@ -148,6 +154,9 @@ public class GraphGaz extends AbstractAction {
     }
 
 
+
+
+    // Création d'une classe interne actionListener pour le niveau
     class RadioListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             fenetre.setNiveauAlarme(Integer.parseInt(Character.toString(e.getActionCommand().charAt(e.getActionCommand().length() - 1))));
@@ -156,23 +165,22 @@ public class GraphGaz extends AbstractAction {
     }
 
 
+
+
+
+    // Création d'une classe interne actionListener pour le boutton
     class ButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            System.out.println(textField.getText());
+            //Génération de l'alarme
             CréationAlarme.gazG.generateGazEvent(batim.get(fenetre.getBatAlarme()),fenetre.getNiveauAlarme(),textField.getText());
-//            fenetre.setTa(new GraphTypeA("Type A",AtypeListener.events));
-
+            // Mise a jour des fenetes
             for (FenetreType i : Fenetre.gta){i.reinitialisation();}
             for (FenetreType j : Fenetre.gtb){j.reinitialisation();}
+            //Initialisation de la fenetre
             new GraphGaz(fenetre,"gaz").rea();
-
             }
-
-
-
-
-
     }
+
 
 
 }

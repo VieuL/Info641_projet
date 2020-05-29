@@ -1,5 +1,7 @@
 import java.util.ArrayList;
-
+/**
+ * Classe facilitant la création des écouteurs
+ */
 public class Inscription {
     private String type;
     private String nom;
@@ -8,6 +10,9 @@ public class Inscription {
     public static ArrayList<AtypeListener> aType = new ArrayList<>();
     public Inscription(){}
 
+    /**
+     * Inscription aux alarmes de type B (Gaz et Radio)
+     */
     public void isBtype(){
 
         this.type = "B";
@@ -17,6 +22,9 @@ public class Inscription {
         bType.add(listA);
     }
 
+    /**
+     * Inscription aux alarmes de type A (Gaz et Incendie)
+     */
     public void isAtype(){
         this.type = "A";
         AtypeListener listA = new AtypeListener();

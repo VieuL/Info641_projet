@@ -13,6 +13,7 @@ public class GraphFeu extends AbstractAction {
     private HashMap<String,Batiment> batim = new HashMap<>();
 
     private Fenetre fenetre;
+
     private JComboBox choix = new JComboBox();
     private JLabel label = new JLabel("Choix du batiement");
 
@@ -36,7 +37,15 @@ public class GraphFeu extends AbstractAction {
 
     }
 
+
+
+
+    /**
+     * Construction des panel et incorporation dans une fenetre
+     */
     public void rea() {
+
+        // Initialisation
         µ = 0;
         titre = new JPanel();
         bat = new JPanel();
@@ -125,7 +134,9 @@ public class GraphFeu extends AbstractAction {
     }
 
 
-    // Création d'une classe interne actionListener
+
+
+    // Création d'une classe interne actionListener pour le choix des batiment
     class ItemAction implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             fenetre.setbatAlarmee(choix.getSelectedItem().toString());
@@ -134,6 +145,10 @@ public class GraphFeu extends AbstractAction {
     }
 
 
+
+
+
+    // Création d'une classe interne actionListener pour le niveau
     class RadioListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             fenetre.setNiveauAlarme(Integer.parseInt(Character.toString(e.getActionCommand().charAt(e.getActionCommand().length() - 1))));
@@ -142,11 +157,18 @@ public class GraphFeu extends AbstractAction {
     }
 
 
+
+
+
+   // Création d'une classe interne actionListener pour le boutton
     class ButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
 
+            //Génération de l'alarme
             CréationAlarme.IncendieG.generateIncendieEvent(batim.get(fenetre.getBatAlarme()),fenetre.getNiveauAlarme());
+            // Mise a jour des fenetes
             for (FenetreType i : Fenetre.gta){i.reinitialisation();}
+            //Initialisation de la fenetre
             new GraphFeu(fenetre,"feu").rea();
 
         }
