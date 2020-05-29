@@ -55,7 +55,7 @@ public class GraphFeu extends AbstractAction {
 
         fenetre.remove(titre);
         fenetre.setTitle("Administration");
-        fenetre.setLocationRelativeTo(null);
+        //fenetre.setLocationRelativeTo(null);
 
         bat.setLayout(new BoxLayout(bat, BoxLayout.Y_AXIS));
 
