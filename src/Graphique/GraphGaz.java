@@ -3,7 +3,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
-
+/**
+ * classe de l'onglet du formulaire pour les alertes
+ * lié à un gaz
+ */
 public class GraphGaz extends AbstractAction {
     private Fenetre fenetre;
     private int µ = 0;

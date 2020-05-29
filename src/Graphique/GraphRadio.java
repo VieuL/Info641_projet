@@ -6,6 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 
+/**
+ * classe de l'onglet du formulaire pour les alertes
+ * lié au radiation
+ */
 public class GraphRadio extends AbstractAction {
     private Fenetre fenetre;
     private int µ = 0;

@@ -46,6 +46,9 @@ public class TableWithButton extends JPanel {
         return events;
     }
 
+    /**
+     * classe pour le bouton de detail
+     */
     private class ButtonRenderer extends JButton implements TableCellRenderer {
 
         public ButtonRenderer() {
@@ -63,7 +66,9 @@ public class TableWithButton extends JPanel {
 
     }
 
-
+    /**
+     * classe d'ecouteur du bouton et de l'action
+     */
     private class ButtonEditor extends DefaultCellEditor {
         protected JButton btn;
         private String Text;
@@ -106,11 +111,9 @@ public class TableWithButton extends JPanel {
                         JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                     //supprime evenement
                     Fenetre.updatingWithRemove(this.events.get(select));
-
                 } //sinon on fait rien
             }
             clicked = false;
-
             return Text;
         }
     }

@@ -4,7 +4,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
- * classe qui permet de visualiser les evenements lie a un batiment dans la fenetre administration
+ * classe qui permet de visualiser les evenements lié à
+ * un batiment dans la fenetre administration
  */
 public class GraphBatiment extends AbstractAction implements ActionListener {
     private Fenetre fenetre;

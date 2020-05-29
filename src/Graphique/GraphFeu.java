@@ -3,11 +3,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
-/*
-pane.setLayout(new GridBagLayout());
-GridBagConstraints c = new GridBagConstraints();
-*/
 
+/**
+ * classe de l'onglet du formulaire pour les alertes
+ * lié à un incendie
+ */
 public class GraphFeu extends AbstractAction {
     private int µ = 0;
     private HashMap<String,Batiment> batim = new HashMap<>();
